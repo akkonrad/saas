@@ -175,8 +175,68 @@ Projects and libraries use tags to enforce architectural constraints. Tags are d
 - Main routing configuration in `libs/web/feature-shell`
 - Feature modules define their own child routes
 
+## Generating Libraries
+
+Use Nx generators with proper tags to create new libraries:
+
+### API/NestJS Libraries
+```bash
+npx nx generate @nx/nest:lib \
+  --name=data-access-supabase \
+  --directory=libs/api/data-access-supabase \
+  --importPath=@saas/api/data-access-supabase \
+  --projectNameAndRootFormat=as-provided \
+  --tags=type:data-access,platform:node,scope:shared \
+  --strict \
+  --unitTestRunner=jest
+```
+
+### Web/Angular Libraries
+```bash
+npx nx generate @nx/angular:lib \
+  --name=feature-dashboard \
+  --directory=libs/web/feature-dashboard \
+  --importPath=@saas/web/feature-dashboard \
+  --projectNameAndRootFormat=as-provided \
+  --tags=type:feature,platform:web,scope:faceless \
+  --strict \
+  --standalone
+```
+
+### Shared/JS Libraries
+```bash
+npx nx generate @nx/js:library \
+  --name=util-schema \
+  --directory=libs/shared/util-schema \
+  --importPath=@saas/shared/util-schema \
+  --projectNameAndRootFormat=as-provided \
+  --bundler=tsc \
+  --tags=type:util,platform:shared,scope:shared \
+  --strict \
+  --unitTestRunner=jest
+```
+
+**Remember:** Always specify all three tag types: `type:*`, `platform:*`, `scope:*`
+
 ## Shared Code ("Single Truth")
 
+Shared libraries (`libs/shared/**`) contain code used by BOTH frontend and backend:
+
+### What Goes in Shared Libraries:
+- **Zod Schemas** (`util-schema`) - Validation schemas shared between frontend and backend
+- **TypeScript Types/Interfaces** - Inferred from Zod schemas via `z.infer<typeof Schema>`
+- **Constants & Enums** - Shared configuration values, status codes, etc.
+- **Pure Utility Functions** - Functions that work in both browser and Node.js (no platform-specific APIs)
+- **DTO Definitions** - Data Transfer Objects used in API contracts
+
+### What Does NOT Go in Shared Libraries:
+- HTTP clients (Angular HttpClient, Axios) → `libs/web/data-access-*` or `libs/api/data-access-*`
+- Database queries → `libs/api/data-access-*`
+- Components → `libs/web/ui-*` or `libs/web/feature-*`
+- NestJS services → `libs/api/data-access-*`
+- Platform-specific code (DOM, Node.js APIs)
+
+### Example: Shared Schema Library
 The `libs/shared/util-schema` library is the **single source of truth** for:
 - Validation schemas (Zod)
 - Shared TypeScript types (via `z.infer`)
@@ -185,8 +245,8 @@ The `libs/shared/util-schema` library is the **single source of truth** for:
 When adding new entities or DTOs:
 1. Define Zod schema in `libs/shared/util-schema`
 2. Export TypeScript type: `export type User = z.infer<typeof UserSchema>`
-3. Use schema for validation on backend
-4. Use type for type safety on frontend
+3. Use schema for validation on backend (NestJS)
+4. Use type for type safety on frontend (Angular)
 
 ## Project Structure
 
@@ -218,3 +278,27 @@ Copy `.env.example` to `.env` and configure before running.
 2. Frontend runs on port 4200 and proxies `/api/*` requests to backend (see `web/proxy.conf.json`)
 3. When running `npx nx serve web`, the API is automatically started first (see `web/project.json` dependsOn)
 4. Tests use Jest across all projects
+
+## Available Skills
+
+This project includes custom skills to help with development. Skills are located in `.claude/skills/`:
+
+- `/nest` - NestJS development best practices reviewer and helper
+- `/ng` - Angular development best practices reviewer and helper
+
+Run these skills when working with NestJS or Angular code to ensure best practices are followed.
+
+## Tasks Template
+
+Follow this template when defining tasks that you will follow when executing:
+
+```
+T1. Task title
+Task description
+- sub task 1 (if needed)
+- sub task 2 (if needed)
+Requirements: T0.artifact1, T0.artifact2, T5.artifact4
+Artifacts:
+- T1.artifact1 (use descriptive names, e.g., T1.data-access-service)
+```
+
