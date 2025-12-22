@@ -57,7 +57,11 @@
           "buildTarget": "face-web:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "dependsOn": ["face-api:serve"],
+      "options": {
+        "proxyConfig": "apps/faceless/web/proxy.conf.json"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
