@@ -2,7 +2,11 @@
   "name": "@saas/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:face": "yarn nx serve face-web",
+    "start:face:web": "yarn nx serve face-web",
+    "start:face:api": "yarn nx serve face-api"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/core": "~21.0.0",

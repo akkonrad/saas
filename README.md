@@ -44,11 +44,45 @@ Common code used by both Frontend and Backend.
 
 ---
 
+## 🏗 Architecture & Tags
+
+This project uses **Nx tags** to enforce strict architectural boundaries via ESLint. Each project/library has tags in its `project.json` file.
+
+### Tag Categories
+
+1. **Type Tags** (what it is):
+   - `type:app` - Applications
+   - `type:feature` - Feature libraries
+   - `type:ui` - UI/presentational libraries
+   - `type:data-access` - Data access libraries
+   - `type:util` - Utility libraries
+
+2. **Platform Tags** (where it runs):
+   - `platform:web` - Angular/frontend
+   - `platform:node` - NestJS/backend
+   - `platform:shared` - Shared code
+
+3. **Scope Tags** (product domain):
+   - `scope:faceless` - Faceless product
+   - `scope:shared` - Shared across products
+
+### Dependency Rules
+
+- `platform:web` ➜ only `platform:web` or `platform:shared`
+- `platform:node` ➜ only `platform:node` or `platform:shared`
+- `type:feature` ➜ `type:ui`, `type:data-access`, `type:util`
+- `type:ui` ➜ only `type:ui` and `type:util`
+- `type:util` ➜ only other `type:util`
+
+These rules are enforced by `@nx/enforce-module-boundaries` in `eslint.config.mjs`.
+
+---
+
 ## 🚦 Getting Started
 
 ### 1. Prerequisites
 - Node.js v20+
-- PNPM or NPM
+- Yarn
 - Supabase Account & Stripe Account
 
 ### 2. Environment Variables
@@ -59,8 +93,9 @@ Copy `.env.example` to `.env` and fill in:
 
 ### 3. Installation & Run
 ```bash
-pnpm install
-# Start API
-npx nx serve api
-# Start Frontend
-npx nx serve web
+yarn install
+
+# Faceless App
+yarn start:face          # Start faceless web (auto-starts API)
+yarn start:face:web      # Start faceless web only
+yarn start:face:api      # Start faceless API only

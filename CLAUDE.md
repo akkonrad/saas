@@ -12,54 +12,54 @@ This is an Nx monorepo for building SaaS applications with Angular (frontend) an
 
 ### Development
 ```bash
-# Start backend API (runs on http://localhost:3000/api)
-npx nx serve api
+# Faceless App
+yarn start:face          # Start faceless web (auto-starts API)
+yarn start:face:web      # Start faceless web only
+yarn start:face:api      # Start faceless API only
 
-# Start frontend (runs on http://localhost:4200, proxies /api to backend)
-npx nx serve web
-
-# Run both (web target depends on api:serve)
-npx nx serve web
+# Direct Nx commands
+yarn nx serve face-web       # Faceless web (runs on http://localhost:4200)
+yarn nx serve face-api       # Faceless API (runs on http://localhost:3000/api)
 ```
 
 ### Testing
 ```bash
 # Run all tests
-npx nx run-many -t test
+yarn nx run-many -t test
 
 # Run tests for specific project
-npx nx test api
-npx nx test web
+yarn nx test face-api
+yarn nx test face-web
 
 # Run E2E tests for API
-npx nx e2e api-e2e
+yarn nx e2e face-api-e2e
 
 # Run tests in CI mode with coverage
-npx nx test api --configuration=ci
+yarn nx test face-api --configuration=ci
 ```
 
 ### Building
 ```bash
-# Build API for production
-npx nx build api
+# Build faceless API for production
+yarn nx build face-api
 
-# Build web app for production
-npx nx build web
+# Build faceless web app for production
+yarn nx build face-web
 
 # Build all projects
-npx nx run-many -t build
+yarn nx run-many -t build
 ```
 
 ### Linting & Formatting
 ```bash
 # Lint all projects
-npx nx run-many -t lint
+yarn nx run-many -t lint
 
 # Lint specific project
-npx nx lint web
+yarn nx lint face-web
 
 # Format with Prettier
-npx prettier --write .
+yarn prettier --write .
 ```
 
 ## Architecture Principles
@@ -89,6 +89,49 @@ The project enforces Nx module boundaries via ESLint. Respect these constraints:
 - Backend code (`libs/api/**`) cannot import frontend code (`libs/web/**`)
 - Shared code (`libs/shared/**`) can be imported by both frontend and backend
 - Applications import from libraries, never the reverse
+
+### Nx Tags System
+Projects and libraries use tags to enforce architectural constraints. Tags are defined in each `project.json` file and validated by ESLint.
+
+**Tag Categories:**
+
+1. **Type Tags** (what kind of project):
+   - `type:app` - Applications (minimal shells)
+   - `type:feature` - Feature libraries (smart components with routing/controllers)
+   - `type:ui` - UI/presentational libraries (components, DTOs, entities)
+   - `type:data-access` - Data access libraries (services, API clients, database)
+   - `type:util` - Utility libraries (pure functions, helpers, schemas)
+
+2. **Platform Tags** (where it runs):
+   - `platform:web` - Angular/frontend code
+   - `platform:node` - NestJS/backend code
+   - `platform:shared` - Code shared between frontend and backend
+
+3. **Scope Tags** (which product/domain):
+   - `scope:faceless` - Faceless product
+   - `scope:shared` - Shared across all products
+
+**Dependency Rules:**
+- `platform:web` can only depend on `platform:web` or `platform:shared`
+- `platform:node` can only depend on `platform:node` or `platform:shared`
+- `platform:shared` can only depend on other `platform:shared`
+- `type:app` can depend on any library type
+- `type:feature` can depend on `type:ui`, `type:data-access`, `type:util`
+- `type:ui` can only depend on `type:ui` and `type:util`
+- `type:data-access` can only depend on `type:data-access` and `type:util`
+- `type:util` can only depend on other `type:util`
+
+**Example Tags:**
+```json
+// apps/faceless/web/project.json
+"tags": ["type:app", "platform:web", "scope:faceless"]
+
+// libs/web/feature-dashboard/project.json
+"tags": ["type:feature", "platform:web", "scope:shared"]
+
+// libs/shared/util-schema/project.json
+"tags": ["type:util", "platform:shared", "scope:shared"]
+```
 
 ## Backend (NestJS) Guidelines
 

@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/faceless/api/src",
   "projectType": "application",
-  "tags": ["platform:node", "type:app"],
+  "tags": ["type:app", "platform:node", "scope:faceless"],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
