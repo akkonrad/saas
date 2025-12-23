@@ -20,7 +20,11 @@
             "input": "apps/faceless/web/public"
           }
         ],
-        "styles": ["apps/faceless/web/src/styles.scss"]
+        "styles": ["apps/faceless/web/src/styles.scss"],
+        "define": {
+          "import.meta.env.NG_APP_SUPABASE_URL": "\"${SUPABASE_URL}\"",
+          "import.meta.env.NG_APP_SUPABASE_PUBLISHABLE_KEY": "\"${SUPABASE_PUBLISHABLE_KEY}\""
+        }
       },
       "configurations": {
         "production": {
@@ -36,7 +40,13 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/faceless/web/src/environments/environment.development.ts",
+              "with": "apps/faceless/web/src/environments/environment.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
@@ -60,7 +70,8 @@
       "defaultConfiguration": "development",
       "dependsOn": ["face-api:serve"],
       "options": {
-        "proxyConfig": "apps/faceless/web/proxy.conf.json"
+        "proxyConfig": "apps/faceless/web/proxy.conf.json",
+        "port": 4210
       }
     },
     "lint": {
