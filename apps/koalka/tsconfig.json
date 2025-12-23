@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["astro/client"],
+    "strict": true
+  },
+  "include": ["src/**/*", "../../libs/**/*"]
+}
