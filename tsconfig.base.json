@@ -14,7 +14,21 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@saas/shared/util-schema": ["libs/shared/util-schema/src/index.ts"],
+      "@saas/api/data-access-supabase": [
+        "libs/api/data-access-supabase/src/index.ts"
+      ],
+      "@saas/api/data-access-supabase-auth": [
+        "libs/api/data-access-supabase-auth/src/index.ts"
+      ],
+      "@saas/api/data-access-supabase-database": [
+        "libs/api/data-access-supabase-database/src/index.ts"
+      ],
+      "@saas/api/data-access-supabase-storage": [
+        "libs/api/data-access-supabase-storage/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
