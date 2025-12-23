@@ -9,6 +9,7 @@ import {
 import { SupabaseAuthModule } from '@saas/api/data-access-supabase-auth';
 import { SupabaseDatabaseModule } from '@saas/api/data-access-supabase-database';
 import { SupabaseStorageModule } from '@saas/api/data-access-supabase-storage';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,8 @@ import { SupabaseStorageModule } from '@saas/api/data-access-supabase-storage';
     SupabaseAuthModule,
     SupabaseDatabaseModule,
     SupabaseStorageModule,
+    // Application auth module
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
