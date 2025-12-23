@@ -69,20 +69,47 @@ yarn prettier --write .
 - **Libraries** (`libs/`) contain ALL features, services, components, and utilities
 - This ensures maximum code reuse and maintainability
 
-### Library Naming Conventions
-When creating new libraries, follow these patterns:
+### Domain-Driven Library Organization
 
-- **`feature-*`**: Smart components with routing (Angular) or controllers (NestJS)
-  - Example: `libs/web/feature-dashboard`, `libs/api/feature-billing`
+This monorepo follows a **domain-driven** approach where libraries are organized by business domain rather than technical type. This aligns with Domain-Driven Design (DDD) principles and scales better as the project grows.
 
-- **`ui-*`**: Presentational components (Angular) or DTOs/Entities (NestJS)
-  - Example: `libs/web/ui-kit`, `libs/shared/ui-common`
+**Structure Pattern:**
+```
+libs/
+├── api/
+│   ├── {domain}/          # Domain grouping (e.g., supabase, billing, users)
+│   │   ├── {library}/     # Specific library (e.g., auth, core, storage)
+│   └── ...
+├── web/
+│   ├── {domain}/          # Domain grouping (e.g., supabase, billing, users)
+│   │   ├── {library}/     # Specific library (e.g., auth, forms)
+│   └── ...
+└── shared/
+    └── {library}/         # Shared across all domains
+```
 
-- **`data-access-*`**: Services, API clients, database access
-  - Example: `libs/api/data-access-stripe`, `libs/web/data-access-auth`
+**Library Types** (enforced via tags, not folder names):
 
-- **`util-*`**: Pure functions, helpers, schemas, shared types
-  - Example: `libs/shared/util-schema`, `libs/api/util-logger`
+- **`type:feature`**: Smart components with routing (Angular) or controllers (NestJS)
+- **`type:ui`**: Presentational components (Angular) or DTOs/Entities (NestJS)
+- **`type:data-access`**: Services, API clients, database access
+- **`type:util`**: Pure functions, helpers, schemas, shared types
+
+**Real Examples:**
+```
+libs/api/supabase/core       → @saas/api/supabase-core (type:data-access)
+libs/api/supabase/auth       → @saas/api/supabase-auth (type:data-access)
+libs/api/supabase/database   → @saas/api/supabase-database (type:data-access)
+libs/api/supabase/storage    → @saas/api/supabase-storage (type:data-access)
+libs/web/supabase/auth       → @saas/web/supabase-auth (type:data-access)
+libs/shared/util-schema      → @saas/shared/util-schema (type:util)
+```
+
+**Naming Conventions:**
+- Library names should be **concise and domain-focused**
+- No technical prefixes in names (e.g., `supabase-core` NOT `data-access-supabase-core`)
+- Import paths are short: `@saas/{platform}/{library-name}`
+- Project names must be unique across all libraries (use platform prefix if needed)
 
 ### Module Boundaries
 The project enforces Nx module boundaries via ESLint. Respect these constraints:
@@ -111,6 +138,12 @@ Projects and libraries use tags to enforce architectural constraints. Tags are d
    - `scope:faceless` - Faceless product
    - `scope:shared` - Shared across all products
 
+4. **Domain Tags** (business domain - optional but recommended):
+   - `domain:supabase` - Supabase-related libraries
+   - `domain:billing` - Billing and payment libraries
+   - `domain:users` - User management libraries
+   - etc.
+
 **Dependency Rules:**
 - `platform:web` can only depend on `platform:web` or `platform:shared`
 - `platform:node` can only depend on `platform:node` or `platform:shared`
@@ -129,6 +162,9 @@ Projects and libraries use tags to enforce architectural constraints. Tags are d
 // libs/web/feature-dashboard/project.json
 "tags": ["type:feature", "platform:web", "scope:shared"]
 
+// libs/api/supabase/core/project.json
+"tags": ["type:data-access", "platform:node", "scope:shared", "domain:supabase"]
+
 // libs/shared/util-schema/project.json
 "tags": ["type:util", "platform:shared", "scope:shared"]
 ```
@@ -143,16 +179,16 @@ Projects and libraries use tags to enforce architectural constraints. Tags are d
 ### Database (Supabase)
 - Use `supabase-js` client with `SERVICE_ROLE` key for backend operations
 - Auth guards should use Supabase JWT verification
-- Database logic belongs in `data-access-*` libraries
+- Database logic belongs in domain-specific libraries (e.g., `libs/api/supabase/*`)
 
 ### Stripe Integration
-- All Stripe logic goes in `libs/api/data-access-billing` (or similar)
+- All Stripe logic goes in `libs/api/billing/stripe`
 - Webhooks MUST be idempotent
 - Handle webhooks in dedicated controller with proper signature verification
 
 ### Mailing
 - Use Mailchimp Transactional (Mandrill) API for emails
-- Email templates and logic in `libs/api/data-access-mailing`
+- Email templates and logic in `libs/api/mailing/*` (domain-specific libraries)
 
 ## Frontend (Angular) Guidelines
 
@@ -168,37 +204,55 @@ Projects and libraries use tags to enforce architectural constraints. Tags are d
 - Component styles should be minimal
 
 ### Data Access
-- Services in `data-access-*` libraries return Signals or Observables
+- Services in domain-specific libraries (e.g., `libs/web/supabase/*`) return Signals or Observables
 - Keep components lean - business logic in services
 
 ### Routing
-- Main routing configuration in `libs/web/feature-shell`
+- Main routing configuration in `libs/web/shell/*` or app routing
 - Feature modules define their own child routes
 
 ## Generating Libraries
 
-Use Nx generators with proper tags to create new libraries:
+Use Nx generators with proper tags to create new libraries. Follow the **domain-driven** structure:
 
-### API/NestJS Libraries
+### API/NestJS Libraries (Domain-Driven)
 ```bash
+# Example: Creating a Supabase auth library
 npx nx generate @nx/nest:lib \
-  --name=data-access-supabase \
-  --directory=libs/api/data-access-supabase \
-  --importPath=@saas/api/data-access-supabase \
-  --projectNameAndRootFormat=as-provided \
-  --tags=type:data-access,platform:node,scope:shared \
+  --name=supabase-auth \
+  --directory=libs/api/supabase/auth \
+  --importPath=@saas/api/supabase-auth \
+  --tags=type:data-access,platform:node,scope:shared,domain:supabase \
+  --strict \
+  --unitTestRunner=jest
+
+# Example: Creating a billing Stripe library
+npx nx generate @nx/nest:lib \
+  --name=billing-stripe \
+  --directory=libs/api/billing/stripe \
+  --importPath=@saas/api/billing-stripe \
+  --tags=type:data-access,platform:node,scope:shared,domain:billing \
   --strict \
   --unitTestRunner=jest
 ```
 
-### Web/Angular Libraries
+### Web/Angular Libraries (Domain-Driven)
 ```bash
+# Example: Creating a Supabase auth library for web
 npx nx generate @nx/angular:lib \
-  --name=feature-dashboard \
-  --directory=libs/web/feature-dashboard \
-  --importPath=@saas/web/feature-dashboard \
-  --projectNameAndRootFormat=as-provided \
-  --tags=type:feature,platform:web,scope:faceless \
+  --name=web-supabase-auth \
+  --directory=libs/web/supabase/auth \
+  --importPath=@saas/web/supabase-auth \
+  --tags=type:data-access,platform:web,scope:faceless,domain:supabase \
+  --strict \
+  --standalone
+
+# Example: Creating a dashboard feature
+npx nx generate @nx/angular:lib \
+  --name=dashboard-feature \
+  --directory=libs/web/dashboard/feature \
+  --importPath=@saas/web/dashboard-feature \
+  --tags=type:feature,platform:web,scope:faceless,domain:dashboard \
   --strict \
   --standalone
 ```
@@ -209,14 +263,18 @@ npx nx generate @nx/js:library \
   --name=util-schema \
   --directory=libs/shared/util-schema \
   --importPath=@saas/shared/util-schema \
-  --projectNameAndRootFormat=as-provided \
   --bundler=tsc \
   --tags=type:util,platform:shared,scope:shared \
   --strict \
   --unitTestRunner=jest
 ```
 
-**Remember:** Always specify all three tag types: `type:*`, `platform:*`, `scope:*`
+**Key Principles:**
+- **Always** specify required tags: `type:*`, `platform:*`, `scope:*`
+- **Optionally** add `domain:*` tag for better organization
+- Use **domain-driven directory structure**: `libs/{platform}/{domain}/{library}`
+- Keep **library names short** and domain-focused (no technical prefixes)
+- **Import paths** should be concise: `@saas/{platform}/{library-name}`
 
 ## Shared Code ("Single Truth")
 
@@ -230,10 +288,10 @@ Shared libraries (`libs/shared/**`) contain code used by BOTH frontend and backe
 - **DTO Definitions** - Data Transfer Objects used in API contracts
 
 ### What Does NOT Go in Shared Libraries:
-- HTTP clients (Angular HttpClient, Axios) → `libs/web/data-access-*` or `libs/api/data-access-*`
-- Database queries → `libs/api/data-access-*`
-- Components → `libs/web/ui-*` or `libs/web/feature-*`
-- NestJS services → `libs/api/data-access-*`
+- HTTP clients (Angular HttpClient, Axios) → `libs/web/{domain}/*`
+- Database queries → `libs/api/{domain}/*`
+- Components → `libs/web/{domain}/*`
+- NestJS services → `libs/api/{domain}/*`
 - Platform-specific code (DOM, Node.js APIs)
 
 ### Example: Shared Schema Library
@@ -252,16 +310,33 @@ When adding new entities or DTOs:
 
 ```
 saas/
-├── apps/               # NestJS backend application (minimal shell)
-    ├── api/            # NestJS backend application (minimal shell)
-    └── web/            # Angular frontend application (minimal shell)
-├── libs/               # All business logic lives here (to be created)
-│   ├── api/            # Backend-specific libraries
-│   ├── web/            # Frontend-specific libraries
-│   └── shared/         # Code shared between frontend and backend
+├── apps/
+│   ├── faceless/
+│   │   ├── api/            # NestJS backend (minimal shell)
+│   │   └── web/            # Angular frontend (minimal shell)
+├── libs/                   # All business logic lives here
+│   ├── api/                # Backend-specific libraries (domain-driven)
+│   │   ├── supabase/       # Supabase domain
+│   │   │   ├── core/       # @saas/api/supabase-core
+│   │   │   ├── auth/       # @saas/api/supabase-auth
+│   │   │   ├── database/   # @saas/api/supabase-database
+│   │   │   └── storage/    # @saas/api/supabase-storage
+│   │   ├── billing/        # Billing domain (future)
+│   │   └── ...
+│   ├── web/                # Frontend-specific libraries (domain-driven)
+│   │   ├── supabase/       # Supabase domain
+│   │   │   └── auth/       # @saas/web/supabase-auth
+│   │   ├── dashboard/      # Dashboard domain (future)
+│   │   └── ...
+│   └── shared/             # Code shared between frontend and backend
+│       └── util-schema/    # @saas/shared/util-schema
 ```
 
-Note: The `libs/` directory structure will be built out as features are added following the library naming conventions above.
+**Key Points:**
+- Libraries are organized by **business domain** (supabase, billing, users, etc.)
+- Each domain can contain multiple libraries with specific responsibilities
+- Import paths are short and domain-focused
+- This structure scales well as the monorepo grows
 
 ## Environment Configuration
 

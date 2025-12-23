@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
-import { SupabaseAuthGuard, CurrentUser, CurrentSupabaseUser } from '@saas/api/data-access-supabase-auth';
+import { SupabaseAuthGuard, CurrentUser, CurrentSupabaseUser } from '@saas/api/supabase-auth';
 import { JwtPayload, SupabaseUser } from '@saas/shared/util-schema';
 
 @Controller()

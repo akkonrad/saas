@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException, BadRequestException } from '@nestjs/common';
-import { SupabaseService } from '@saas/api/data-access-supabase';
+import { SupabaseService } from '@saas/api/supabase-core';
 import { RegisterDto, LoginDto, LoginPasswordlessDto } from './dto';
 
 /**
