@@ -27,7 +27,8 @@
       ],
       "@saas/api/data-access-supabase-storage": [
         "libs/api/data-access-supabase-storage/src/index.ts"
-      ]
+      ],
+      "@saas/web/data-access-auth": ["libs/web/data-access-auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
