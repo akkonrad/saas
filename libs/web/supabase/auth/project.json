@@ -1,0 +1,25 @@
+{
+  "name": "web-supabase-auth",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/supabase/auth/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [
+    "type:data-access",
+    "platform:web",
+    "scope:faceless",
+    "domain:supabase"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../../coverage/libs/web/supabase/auth"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

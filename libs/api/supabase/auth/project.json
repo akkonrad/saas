@@ -1,0 +1,21 @@
+{
+  "name": "supabase-auth",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/supabase/auth/src",
+  "projectType": "library",
+  "tags": [
+    "type:data-access",
+    "platform:node",
+    "scope:shared",
+    "domain:supabase"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/supabase/auth/jest.config.cts"
+      }
+    }
+  }
+}

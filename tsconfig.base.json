@@ -16,19 +16,13 @@
     "baseUrl": ".",
     "paths": {
       "@saas/shared/util-schema": ["libs/shared/util-schema/src/index.ts"],
-      "@saas/api/data-access-supabase": [
-        "libs/api/data-access-supabase/src/index.ts"
+      "@saas/api/supabase-core": ["libs/api/supabase/core/src/index.ts"],
+      "@saas/api/supabase-auth": ["libs/api/supabase/auth/src/index.ts"],
+      "@saas/api/supabase-database": [
+        "libs/api/supabase/database/src/index.ts"
       ],
-      "@saas/api/data-access-supabase-auth": [
-        "libs/api/data-access-supabase-auth/src/index.ts"
-      ],
-      "@saas/api/data-access-supabase-database": [
-        "libs/api/data-access-supabase-database/src/index.ts"
-      ],
-      "@saas/api/data-access-supabase-storage": [
-        "libs/api/data-access-supabase-storage/src/index.ts"
-      ],
-      "@saas/web/data-access-auth": ["libs/web/data-access-auth/src/index.ts"]
+      "@saas/api/supabase-storage": ["libs/api/supabase/storage/src/index.ts"],
+      "@saas/web/supabase-auth": ["libs/web/supabase/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
