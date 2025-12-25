@@ -22,7 +22,8 @@
         "libs/api/supabase/database/src/index.ts"
       ],
       "@saas/api/supabase-storage": ["libs/api/supabase/storage/src/index.ts"],
-      "@saas/web/supabase-auth": ["libs/web/supabase/auth/src/index.ts"]
+      "@saas/web/supabase-auth": ["libs/web/supabase/auth/src/index.ts"],
+      "@ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

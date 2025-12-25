@@ -1,0 +1,19 @@
+/* UI Library Global Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * DaisyUI Theme Support
+ * Applications can override these by configuring themes in their tailwind.config.js
+ * Components will automatically use the active theme's CSS custom properties
+ */
+
+/* Custom component styles that use DaisyUI theme variables */
+@layer components {
+  /* Example: Custom variants using theme colors */
+  .ui-custom-variant {
+    background-color: oklch(var(--b1));
+    color: oklch(var(--bc));
+  }
+}
