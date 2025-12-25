@@ -1,0 +1,3 @@
+[submodule "external/koalka-v0"]
+	path = external/koalka-v0
+	url = git@github.com:akkonrad/koalka.git
