@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:face": "yarn nx serve face-web",
-    "start:face:web": "yarn nx serve face-web",
-    "start:face:api": "yarn nx serve face-api"
+    "start:face": "nx serve face-web",
+    "start:face:web": "nx serve face-web",
+    "start:face:api": "nx serve face-api",
+    "nx": "nx"
   },
   "private": true,
   "devDependencies": {

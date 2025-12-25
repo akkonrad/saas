@@ -8,66 +8,11 @@ This is an Nx monorepo for building SaaS applications with Angular (frontend) an
 
 **Tech Stack:** Angular 21 (Signals, Standalone), NestJS 11, Supabase (Auth & DB), Stripe (Payments), Zod (Validation), Tailwind CSS
 
-## Common Commands
-
-### Development
-```bash
-# Faceless App
-yarn start:face          # Start faceless web (auto-starts API)
-yarn start:face:web      # Start faceless web only
-yarn start:face:api      # Start faceless API only
-
-# Direct Nx commands
-yarn nx serve face-web       # Faceless web (runs on http://localhost:4200)
-yarn nx serve face-api       # Faceless API (runs on http://localhost:3000/api)
-```
-
-### Testing
-```bash
-# Run all tests
-yarn nx run-many -t test
-
-# Run tests for specific project
-yarn nx test face-api
-yarn nx test face-web
-
-# Run E2E tests for API
-yarn nx e2e face-api-e2e
-
-# Run tests in CI mode with coverage
-yarn nx test face-api --configuration=ci
-```
-
-### Building
-```bash
-# Build faceless API for production
-yarn nx build face-api
-
-# Build faceless web app for production
-yarn nx build face-web
-
-# Build all projects
-yarn nx run-many -t build
-```
-
-### Linting & Formatting
-```bash
-# Lint all projects
-yarn nx run-many -t lint
-
-# Lint specific project
-yarn nx lint face-web
-
-# Format with Prettier
-yarn prettier --write .
-```
-
 ## Architecture Principles
 
 ### App-as-a-Shell Pattern
-- **Applications** (`api/`, `web/`) are minimal entry points with NO business logic
-- **Libraries** (`libs/`) contain ALL features, services, components, and utilities
-- This ensures maximum code reuse and maintainability
+- **Applications** (`api/`, `web/`, `landing/`) are minimal entry points with minimal and specific business logic
+- **Libraries** (`libs/`) contain most features, services, components, and utilities
 
 ### Domain-Driven Library Organization
 
@@ -102,14 +47,23 @@ libs/api/supabase/auth       → @saas/api/supabase-auth (type:data-access)
 libs/api/supabase/database   → @saas/api/supabase-database (type:data-access)
 libs/api/supabase/storage    → @saas/api/supabase-storage (type:data-access)
 libs/web/supabase/auth       → @saas/web/supabase-auth (type:data-access)
+libs/web/supabase/forms      → @saas/web/supabase-forms (type:data-access)
 libs/shared/util-schema      → @saas/shared/util-schema (type:util)
 ```
 
 **Naming Conventions:**
 - Library names should be **concise and domain-focused**
 - No technical prefixes in names (e.g., `supabase-core` NOT `data-access-supabase-core`)
-- Import paths are short: `@saas/{platform}/{library-name}`
+- Import paths are short: `@saas/{platform}/{library-name}`, eg. `@saas/api/supabase-auth`
 - Project names must be unique across all libraries (use platform prefix if needed)
+- Exception is ui library - this should be `@ui/<component-name>`
+
+### UI Components 
+- Use `@ui` prefix for UI components
+- All UI components should be in `libs/ui` folder
+- Use `@ui/<component-name>` import paths
+- UI components should be standalone, on-push change detection, and have no business logic
+
 
 ### Module Boundaries
 The project enforces Nx module boundaries via ESLint. Respect these constraints:
@@ -340,7 +294,7 @@ saas/
 
 ## Environment Configuration
 
-Required environment variables depend on what is required in a given app.
+Required environment variables depend on what is required in a given app, eg: 
 - `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE`
 - `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`
 - `SENTRY_DSN`
@@ -348,7 +302,6 @@ Required environment variables depend on what is required in a given app.
 Copy `.env.example` to `.env` and configure before running.
 
 ## Development Workflow
-
 1. Backend runs on port 3000 with `/api` prefix
 2. Frontend runs on port 4200 and proxies `/api/*` requests to backend (see `web/proxy.conf.json`)
 3. When running `npx nx serve web`, the API is automatically started first (see `web/project.json` dependsOn)
