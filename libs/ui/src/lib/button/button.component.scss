@@ -1,0 +1,20 @@
+/*
+ * UI Button Component Styles
+ *
+ * This component uses DaisyUI's 'btn' classes which automatically
+ * respect the active theme's CSS custom properties.
+ *
+ * No custom styles needed - DaisyUI handles theming!
+ * If you need custom styles, use theme CSS variables:
+ *
+ * Example:
+ * .custom-hover {
+ *   &:hover {
+ *     background-color: oklch(var(--p) / 0.8);
+ *   }
+ * }
+ */
+
+:host {
+  display: inline-block;
+}
