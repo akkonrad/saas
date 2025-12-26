@@ -1,3 +1,2 @@
-*, body {
-  background: red !important;
-}
+/* This file is kept for compatibility but styles are loaded via CDN in Storybook */
+/* See libs/ui/.storybook/preview-head.html for Tailwind + DaisyUI CDN setup */

@@ -83,10 +83,6 @@ export class UiButtonComponent {
       classes.push('btn-block');
     }
 
-    if (this.loading()) {
-      classes.push('loading loading-spinner');
-    }
-
     return classes.join(' ');
   }
 

@@ -92,6 +92,13 @@ export const Variants: Story = {
 
 // Sizes
 export const Sizes: Story = {
+  args: {
+    loading: true,
+    block: false,
+    variant: 'secondary',
+    size: 'md',
+  },
+
   render: () => ({
     template: `
       <div class="flex flex-wrap items-center gap-2">
