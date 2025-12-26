@@ -4,5 +4,8 @@
   (click)="handleClick($event)"
   type="button"
 >
+  @if (loading()) {
+    <span class="loading loading-spinner"></span>
+  }
   <ng-content></ng-content>
 </button>

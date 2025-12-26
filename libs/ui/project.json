@@ -17,19 +17,21 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
+    "build": {
+      "executor": "@angular-devkit/build-angular:ng-packagr",
+      "outputs": ["{workspaceRoot}/dist/libs/ui"],
+      "options": {
+        "project": "libs/ui/ng-package.json"
+      }
+    },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
       "options": {
         "port": 4400,
         "configDir": "libs/ui/.storybook",
-        "browserTarget": "ui:build-storybook",
+        "browserTarget": "ui:build",
         "compodoc": false,
-        "styles": [
-          "tailwindcss/tailwind.css",
-          "tailwindcss/components.css",
-          "tailwindcss/utilities.css",
-          "daisyui/daisyui.css"
-        ]
+        "styles": []
       },
       "configurations": {
         "ci": {
@@ -43,8 +45,9 @@
       "options": {
         "outputDir": "dist/storybook/ui",
         "configDir": "libs/ui/.storybook",
-        "browserTarget": "ui:build-storybook",
-        "compodoc": false
+        "browserTarget": "ui:build",
+        "compodoc": false,
+        "styles": []
       },
       "configurations": {
         "ci": {
