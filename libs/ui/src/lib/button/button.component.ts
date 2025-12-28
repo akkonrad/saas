@@ -86,6 +86,20 @@ export class UiButtonComponent {
     return classes.join(' ');
   }
 
+  /**
+   * Generate loading spinner classes based on button size
+   */
+  protected get loadingClasses(): string {
+    const classes = ['loading', 'loading-spinner'];
+
+    // Match loading size to button size
+    if (this.size() !== 'md') {
+      classes.push(`loading-${this.size()}`);
+    }
+
+    return classes.join(' ');
+  }
+
   protected handleClick(event: MouseEvent): void {
     if (!this.disabled() && !this.loading()) {
       this.clicked.emit(event);

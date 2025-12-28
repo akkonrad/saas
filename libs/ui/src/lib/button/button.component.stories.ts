@@ -140,19 +140,8 @@ export const States: Story = {
 
 // Modifiers
 export const Modifiers: Story = {
-  render: () => ({
-    template: `
-      <div class="flex flex-col gap-4">
-        <ui-button [wide]="true">Wide Button</ui-button>
-        <ui-button [block]="true">Block Button</ui-button>
-      </div>
-    `,
-  }),
-};
-
-export const Test: Story = {
   args: {
-    variant: 'secondary',
+    variant: 'primary',
     size: 'md',
     disabled: false,
     loading: false,
@@ -160,4 +149,22 @@ export const Test: Story = {
     outline: false,
     wide: false,
   },
+  render: (args) => ({
+    props: args,
+    template: `
+      <div class="flex flex-col gap-4">
+        <ui-button
+          [variant]="variant"
+          [size]="size"
+          [disabled]="disabled"
+          [loading]="loading"
+          [block]="block"
+          [outline]="outline"
+          [wide]="wide"
+        >Interactive Button (use controls)</ui-button>
+        <ui-button [wide]="true">Wide Button (always)</ui-button>
+        <ui-button [block]="true">Block Button (always)</ui-button>
+      </div>
+    `,
+  }),
 };
