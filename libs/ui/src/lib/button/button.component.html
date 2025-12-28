@@ -5,7 +5,7 @@
   type="button"
 >
   @if (loading()) {
-    <span class="loading loading-spinner"></span>
+    <span [class]="loadingClasses"></span>
   }
   <ng-content></ng-content>
 </button>

@@ -68,4 +68,25 @@ describe('UiButtonComponent', () => {
 
     expect(clickEmitted).toBe(false);
   });
+
+  it('should apply block class when block input is true', () => {
+    fixture.componentRef.setInput('block', true);
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+    expect(button.className).toContain('btn-block');
+  });
+
+  it('should apply wide class when wide input is true', () => {
+    fixture.componentRef.setInput('wide', true);
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+    expect(button.className).toContain('btn-wide');
+  });
+
+  it('should apply outline class when outline input is true', () => {
+    fixture.componentRef.setInput('outline', true);
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+    expect(button.className).toContain('btn-outline');
+  });
 });
