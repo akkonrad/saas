@@ -69,13 +69,6 @@ export const Default: Story = {
 
 // Variants
 export const Variants: Story = {
-  args: {
-    variant: 'primary',
-    size: 'sm',
-    loading: true,
-    disabled: true,
-  },
-
   render: () => ({
     template: `
       <div class="flex flex-wrap gap-2">
@@ -92,13 +85,6 @@ export const Variants: Story = {
 
 // Sizes
 export const Sizes: Story = {
-  args: {
-    loading: true,
-    block: false,
-    variant: 'secondary',
-    size: 'md',
-  },
-
   render: () => ({
     template: `
       <div class="flex flex-wrap items-center gap-2">
