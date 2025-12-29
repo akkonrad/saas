@@ -14,6 +14,39 @@ This is an Nx monorepo for building SaaS applications with Angular (frontend) an
 - **Applications** (`api/`, `web/`, `landing/`) are minimal entry points with minimal and specific business logic
 - **Libraries** (`libs/`) contain most features, services, components, and utilities
 
+### Application Naming Convention
+
+Applications must be named with a **product prefix** + **common suffix** pattern to avoid naming conflicts across multiple products in the monorepo.
+
+**Pattern:** `{product-prefix}-{suffix}`
+
+**Common Suffixes:**
+- `-api` - Backend API applications
+- `-web` - Frontend web applications
+- `-landing` - Landing page applications
+- `-mobile` - Mobile applications
+- `-admin` - Admin panel applications
+
+**Examples:**
+```
+apps/faceless/api/       → Project name: face-api
+apps/faceless/web/       → Project name: face-web
+apps/faceless/landing/   → Project name: face-landing
+apps/acme/api/           → Project name: acme-api
+apps/acme/web/           → Project name: acme-web
+```
+
+**Why This Matters:**
+- Nx project names must be unique across the entire workspace
+- Multiple products can coexist without naming conflicts
+- Clear indication of which product an app belongs to
+- Consistent with `nx serve {product}-{suffix}` commands
+
+**Implementation:**
+- Set the `"name"` field in `project.json` to follow this pattern
+- Directory structure can remain nested (e.g., `apps/faceless/landing/`)
+- Use the project name in all Nx commands: `nx serve face-landing`, `nx build face-api`
+
 ### Domain-Driven Library Organization
 
 This monorepo follows a **domain-driven** approach where libraries are organized by business domain rather than technical type. This aligns with Domain-Driven Design (DDD) principles and scales better as the project grows.

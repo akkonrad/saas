@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faceless.example.com/sitemap.xml
