@@ -7,6 +7,8 @@
     "start:face:web": "nx serve face-web",
     "start:face:api": "nx serve face-api",
     "start:face:landing": "nx serve face-landing",
+    "start:koalka": "nx serve koalka-landing",
+    "start:koalka:landing": "nx serve koalka-landing",
     "nx": "nx"
   },
   "private": true,
