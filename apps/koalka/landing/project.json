@@ -21,7 +21,6 @@
           }
         ],
         "styles": [
-          "node_modules/daisyui/daisyui.css",
           "apps/koalka/landing/src/styles.scss"
         ],
         "server": "apps/koalka/landing/src/main.server.ts",
