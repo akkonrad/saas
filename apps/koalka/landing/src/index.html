@@ -1,11 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="koalka-light">
   <head>
     <meta charset="utf-8" />
     <title>koalka-landing</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      // Prevent flash of unstyled content by setting theme before render
+      (function() {
+        const savedTheme = localStorage.getItem('koalka-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'koalka-dark' : 'koalka-light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>
