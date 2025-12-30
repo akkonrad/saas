@@ -20,7 +20,10 @@
             "input": "apps/koalka/landing/public"
           }
         ],
-        "styles": ["apps/koalka/landing/src/styles.scss"],
+        "styles": [
+          "node_modules/daisyui/daisyui.css",
+          "apps/koalka/landing/src/styles.scss"
+        ],
         "server": "apps/koalka/landing/src/main.server.ts",
         "ssr": {
           "entry": "apps/koalka/landing/src/server.ts"
