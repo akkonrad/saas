@@ -299,8 +299,9 @@ When adding new entities or DTOs:
 saas/
 ├── apps/
 │   ├── faceless/
-│   │   ├── api/            # NestJS backend (minimal shell)
-│   │   └── web/            # Angular frontend (minimal shell)
+│   │   ├── api/            # NestJS backend (minimal shell) - face-api
+│   │   ├── web/            # Angular frontend (minimal shell) - face-web
+│   │   └── landing/        # Angular SSR landing page - face-landing
 ├── libs/                   # All business logic lives here
 │   ├── api/                # Backend-specific libraries (domain-driven)
 │   │   ├── supabase/       # Supabase domain
@@ -335,10 +336,44 @@ Required environment variables depend on what is required in a given app, eg:
 Copy `.env.example` to `.env` and configure before running.
 
 ## Development Workflow
-1. Backend runs on port 3000 with `/api` prefix
-2. Frontend runs on port 4200 and proxies `/api/*` requests to backend (see `web/proxy.conf.json`)
-3. When running `npx nx serve web`, the API is automatically started first (see `web/project.json` dependsOn)
-4. Tests use Jest across all projects
+
+### Port Configuration
+
+Each Faceless application uses a dedicated port to avoid conflicts:
+
+| Application | Port | URL | Description |
+|-------------|------|-----|-------------|
+| **face-api** | `3020` | http://localhost:3020/api | NestJS backend with `/api` global prefix |
+| **face-web** | `4210` | http://localhost:4210 | Angular web app, proxies `/api/*` to port 3020 |
+| **face-landing** | `4220` | http://localhost:4220 | Angular SSR landing page (static) |
+
+**Port Allocation Strategy:**
+- Backend APIs: `302x` range (face-api: 3020, future APIs: 3021, 3022, etc.)
+- Frontend apps: `421x` range (face-web: 4210, face-landing: 4220, future: 4230, etc.)
+
+### Development Commands
+
+```bash
+# Start backend API
+npx nx serve face-api
+# → Runs on http://localhost:3020/api
+
+# Start web app (automatically starts face-api first)
+npx nx serve face-web
+# → Runs on http://localhost:4210
+# → Proxies /api/* requests to http://localhost:3020
+
+# Start landing page
+npx nx serve face-landing
+# → Runs on http://localhost:4220
+```
+
+### Key Workflow Notes
+1. **face-api** runs on port **3020** with `/api` global prefix
+2. **face-web** runs on port **4210** and proxies `/api/*` requests to backend (see `apps/faceless/web/proxy.conf.json`)
+3. When running `npx nx serve face-web`, the API is automatically started first (see `dependsOn` in `web/project.json`)
+4. **face-landing** runs on port **4220** as a standalone static site (no API dependency)
+5. Tests use Jest across all projects
 
 ## Available Skills
 

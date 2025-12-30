@@ -1,0 +1,92 @@
+{
+  "name": "koalka-landing",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/koalka/landing/src",
+  "tags": ["type:app", "platform:web", "scope:koalka"],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/koalka/landing",
+        "browser": "apps/koalka/landing/src/main.ts",
+        "tsConfig": "apps/koalka/landing/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/koalka/landing/public"
+          }
+        ],
+        "styles": ["apps/koalka/landing/src/styles.scss"],
+        "server": "apps/koalka/landing/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/koalka/landing/src/server.ts"
+        },
+        "prerender": true,
+        "outputMode": "static"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "options": {
+        "port": 4320
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "koalka-landing:build:production"
+        },
+        "development": {
+          "buildTarget": "koalka-landing:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/koalka/landing/jest.config.cts",
+        "tsConfig": "apps/koalka/landing/tsconfig.spec.json"
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "koalka-landing:build",
+        "staticFilePath": "dist/apps/koalka/landing/browser",
+        "spa": true
+      }
+    }
+  }
+}
