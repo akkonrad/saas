@@ -1,19 +1,41 @@
 <div class="min-h-screen bg-base-100">
-  <section class="hero min-h-screen">
-    <div class="hero-content text-center">
-      <div class="max-w-md">
-        <h1 class="text-5xl font-bold">Welcome to Faceless</h1>
-        <p class="py-6">
-          A modern SaaS platform built with Angular and NestJS
-        </p>
-        <a href="/auth/login" class="btn btn-primary">Get Started</a>
-      </div>
+  <header role="banner" class="navbar bg-base-100 sticky top-0 z-50 border-b border-base-200">
+    <div class="flex-1">
+      <a href="/" class="btn btn-ghost text-xl" [attr.aria-label]="'nav.home' | translate">Faceless</a>
     </div>
-  </section>
+    <nav [attr.aria-label]="'landmarks.main_navigation' | translate">
+      <div class="flex items-center gap-2">
+        <!-- Language Toggle -->
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm"
+          (click)="toggleLanguage()"
+          [attr.aria-label]="currentLang() === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'"
+        >
+          {{ currentLang() === 'en' ? '🇵🇱 PL' : '🇬🇧 EN' }}
+        </button>
+        <a href="/auth/login" class="btn btn-ghost">{{ 'nav.login' | translate }}</a>
+      </div>
+    </nav>
+  </header>
 
-  <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+  <main role="main" id="main-content" [attr.aria-label]="'landmarks.main_content' | translate">
+    <section class="hero min-h-[calc(100vh-8rem)]" aria-labelledby="hero-heading">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 id="hero-heading" class="text-5xl font-bold">{{ 'hero.title' | translate }}</h1>
+          <p class="py-6">
+            {{ 'hero.subtitle' | translate }}
+          </p>
+          <a href="/auth/login" class="btn btn-primary">{{ 'hero.cta' | translate }}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" [attr.aria-label]="'landmarks.site_footer' | translate" class="footer footer-center p-10 bg-base-200 text-base-content rounded">
     <div>
-      <p>Copyright © 2025 - All rights reserved</p>
+      <p>{{ 'footer.copyright' | translate }}</p>
     </div>
   </footer>
 </div>

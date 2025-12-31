@@ -1,0 +1,13 @@
+# Robots.txt for KOALKA
+# https://koalka.pl
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://koalka.pl/sitemap.xml
+
+# Disallow development/internal paths
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.map$
