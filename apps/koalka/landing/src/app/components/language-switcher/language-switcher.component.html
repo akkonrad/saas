@@ -1,0 +1,20 @@
+<div class="flex gap-2">
+  <button
+    type="button"
+    (click)="switchLanguage('pl')"
+    class="btn btn-sm btn-ghost"
+    [class.btn-active]="languageService.currentLanguage() === 'pl'"
+    aria-label="Switch to Polish">
+    <span class="text-lg">🇵🇱</span>
+    <span class="hidden sm:inline">PL</span>
+  </button>
+  <button
+    type="button"
+    (click)="switchLanguage('en')"
+    class="btn btn-sm btn-ghost"
+    [class.btn-active]="languageService.currentLanguage() === 'en'"
+    aria-label="Switch to English">
+    <span class="text-lg">🇬🇧</span>
+    <span class="hidden sm:inline">EN</span>
+  </button>
+</div>

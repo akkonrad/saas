@@ -1,0 +1,34 @@
+<ui-section id="rozwiazanie" variant="muted">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
+        {{ 'solution.title' | translate }}
+      </h2>
+      <p class="text-xl text-center text-base-content/70 mb-12 max-w-2xl mx-auto">
+        {{ 'solution.description' | translate }}
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <app-feature-card
+          iconType="handshake"
+          [title]="'solution.benefit1_title' | translate"
+          [description]="'solution.benefit1_desc' | translate"
+        />
+        <app-feature-card
+          iconType="target"
+          [title]="'solution.benefit2_title' | translate"
+          [description]="'solution.benefit2_desc' | translate"
+        />
+        <app-feature-card
+          iconType="link"
+          [title]="'solution.benefit3_title' | translate"
+          [description]="'solution.benefit3_desc' | translate"
+        />
+        <app-feature-card
+          iconType="check"
+          [title]="'solution.benefit4_title' | translate"
+          [description]="'solution.benefit4_desc' | translate"
+        />
+      </div>
+    </div>
+  </div>
+</ui-section>

@@ -1,0 +1,69 @@
+<header class="navbar bg-base-100/60 backdrop-blur-2xl shadow-sm fixed top-0 z-50 border-b border-base-content/5">
+  <div class="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+          <span class="text-primary-content font-bold text-sm">K</span>
+        </div>
+        <span class="text-lg font-semibold tracking-tight">
+          <span class="text-primary">KOALKA</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="#hero" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">Start</a>
+      <a href="#problem" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.problem' | translate }}</a>
+      <a href="#rozwiazanie" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.solution' | translate }}</a>
+      <a href="#jak-to-dziala" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.how_it_works' | translate }}</a>
+      <a href="#dla-kogo" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.for_who' | translate }}</a>
+      <a href="#zespol" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.team' | translate }}</a>
+      <a href="#kontakt" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.contact' | translate }}</a>
+    </nav>
+
+    <!-- Actions: Language, Theme, CTA -->
+    <div class="flex items-center gap-2">
+      <app-language-switcher />
+      <app-theme-toggle />
+
+      <a href="#kontakt" class="btn btn-primary btn-sm hidden md:flex">
+        {{ 'hero.cta_primary' | translate }}
+      </a>
+
+      <!-- Mobile menu toggle -->
+      <button class="btn btn-ghost lg:hidden" (click)="toggleMobileMenu()">
+        @if (mobileMenuOpen()) {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        } @else {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  @if (mobileMenuOpen()) {
+    <div class="absolute top-full left-0 right-0 bg-base-100 shadow-xl lg:hidden">
+      <ul class="menu p-4 gap-2">
+        <li><a href="#hero" (click)="closeMobileMenu()">Start</a></li>
+        <li><a href="#problem" (click)="closeMobileMenu()">{{ 'nav.problem' | translate }}</a></li>
+        <li><a href="#rozwiazanie" (click)="closeMobileMenu()">{{ 'nav.solution' | translate }}</a></li>
+        <li><a href="#jak-to-dziala" (click)="closeMobileMenu()">{{ 'nav.how_it_works' | translate }}</a></li>
+        <li><a href="#dla-kogo" (click)="closeMobileMenu()">{{ 'nav.for_who' | translate }}</a></li>
+        <li><a href="#zespol" (click)="closeMobileMenu()">{{ 'nav.team' | translate }}</a></li>
+        <li><a href="#kontakt" (click)="closeMobileMenu()">{{ 'nav.contact' | translate }}</a></li>
+        <li class="mt-2">
+          <a href="#kontakt" (click)="closeMobileMenu()" class="btn btn-primary btn-block">
+            {{ 'hero.cta_primary' | translate }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  }
+</header>

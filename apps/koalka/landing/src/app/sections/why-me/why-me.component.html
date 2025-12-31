@@ -1,0 +1,24 @@
+<ui-section id="dlaczego-ja">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+      {{ 'why_me.title' | translate }}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <app-feature-card
+        iconType="cog"
+        [title]="'why_me.problem1_title' | translate"
+        [description]="'why_me.problem1_desc' | translate"
+      />
+      <app-feature-card
+        iconType="plug"
+        [title]="'why_me.problem2_title' | translate"
+        [description]="'why_me.problem2_desc' | translate"
+      />
+      <app-feature-card
+        iconType="muscle"
+        [title]="'why_me.problem3_title' | translate"
+        [description]="'why_me.problem3_desc' | translate"
+      />
+    </div>
+  </div>
+</ui-section>

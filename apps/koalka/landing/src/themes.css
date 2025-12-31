@@ -1,0 +1,73 @@
+@plugin "daisyui/theme" {
+  name: "koalka-light";
+  default: true;
+  color-scheme: light;
+
+  --color-primary: oklch(59.435% 0.077 254.027);
+  --color-primary-content: oklch(95.127% 0.007 260.731);
+  --color-secondary: oklch(69.651% 0.059 248.687);
+  --color-secondary-content: oklch(13.93% 0.011 248.687);
+  --color-accent: oklch(77.464% 0.062 217.469);
+  --color-accent-content: oklch(15.492% 0.012 217.469);
+  --color-neutral: oklch(89.925% 0.016 262.749);
+  --color-neutral-content: oklch(32.437% 0.022 264.182);
+  --color-base-100: oklch(95.127% 0.007 260.731);
+  --color-base-200: oklch(93.299% 0.01 261.788);
+  --color-base-300: oklch(89.925% 0.016 262.749);
+  --color-base-content: oklch(32.437% 0.022 264.182);
+  --color-info: oklch(70% 0.15 240);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(65% 0.15 160);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(85% 0.17 85);
+  --color-warning-content: oklch(20% 0 0);
+  --color-error: oklch(60.61% 0.12 15.341);
+  --color-error-content: oklch(95.127% 0.007 260.731);
+
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+}
+
+@plugin "daisyui/theme" {
+  name: "koalka-dark";
+  prefers-dark: true;
+  color-scheme: dark;
+
+  --color-primary: oklch(69.651% 0.059 248.687);
+  --color-primary-content: oklch(22% 0.02 260);
+  --color-secondary: oklch(59.435% 0.077 254.027);
+  --color-secondary-content: oklch(93.299% 0.01 261.788);
+  --color-accent: oklch(77.464% 0.062 217.469);
+  --color-accent-content: oklch(22% 0.02 260);
+  --color-neutral: oklch(30% 0.02 260);
+  --color-neutral-content: oklch(93.299% 0.01 261.788);
+  --color-base-100: oklch(22% 0.02 260);
+  --color-base-200: oklch(26% 0.02 260);
+  --color-base-300: oklch(30% 0.02 260);
+  --color-base-content: oklch(93.299% 0.01 261.788);
+  --color-info: oklch(70% 0.17 240);
+  --color-info-content: oklch(15% 0 0);
+  --color-success: oklch(65% 0.16 160);
+  --color-success-content: oklch(15% 0 0);
+  --color-warning: oklch(85% 0.17 85);
+  --color-warning-content: oklch(15% 0 0);
+  --color-error: oklch(60.61% 0.12 15.341);
+  --color-error-content: oklch(93.299% 0.01 261.788);
+
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+}

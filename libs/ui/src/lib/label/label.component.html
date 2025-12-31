@@ -1,0 +1,8 @@
+<label [for]="for()" class="label" [class]="customClass()">
+  <span class="label-text">
+    <ng-content></ng-content>
+    @if (required()) {
+      <span class="text-error ml-1">*</span>
+    }
+  </span>
+</label>
