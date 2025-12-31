@@ -1,8 +1,8 @@
-<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" aria-label="Contact form">
   <!-- Success Message -->
   @if (submitSuccess()) {
-    <div class="alert alert-success mb-6">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="alert alert-success mb-6" role="alert" aria-live="polite">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
       </svg>
       <span>{{ 'contact.form_success' | translate }}</span>

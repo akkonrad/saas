@@ -1,48 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './services/language.service';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, TranslateModule],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  constructor(
-    private meta: Meta,
-    private title: Title
-  ) {
-    this.setupSEO();
+export class App implements OnInit {
+  private meta = inject(Meta);
+  private translateService = inject(TranslateService);
+  private languageService = inject(LanguageService);
+
+  ngOnInit(): void {
+    this.setupStaticSEO();
   }
 
-  private setupSEO(): void {
-    this.title.setTitle('Faceless - Modern SaaS Platform');
-
+  private setupStaticSEO(): void {
+    // Static meta tags (non-translated)
     this.meta.addTags([
-      {
-        name: 'description',
-        content: 'A modern SaaS platform built with Angular and NestJS',
-      },
       { name: 'keywords', content: 'saas, angular, nestjs, typescript' },
       { name: 'author', content: 'Faceless' },
-
       { property: 'og:type', content: 'website' },
-      { property: 'og:title', content: 'Faceless - Modern SaaS Platform' },
-      {
-        property: 'og:description',
-        content: 'A modern SaaS platform built with Angular and NestJS',
-      },
-
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Faceless - Modern SaaS Platform' },
-      {
-        name: 'twitter:description',
-        content: 'A modern SaaS platform built with Angular and NestJS',
-      },
-
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'theme-color', content: '#ffffff' },
     ]);
+
+    // Dynamic meta tags are handled by LanguageService.updateMetaTags()
+  }
+
+  toggleLanguage(): void {
+    this.languageService.toggleLanguage();
+  }
+
+  get currentLang() {
+    return this.languageService.currentLanguage;
   }
 }

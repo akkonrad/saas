@@ -1,0 +1,32 @@
+{
+  "name": "KOALKA - Automatyzacja procesów dla MSP",
+  "short_name": "KOALKA",
+  "description": "Budujemy dedykowane automatyzacje dla małych i średnich przedsiębiorstw. Integrujemy systemy, eliminujemy ręczną pracę i oszczędzamy Twój czas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "prefer_related_applications": false
+}
