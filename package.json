@@ -9,6 +9,7 @@
     "start:face:landing": "nx serve face-landing",
     "start:koalka": "nx serve koalka-landing",
     "start:koalka:landing": "nx serve koalka-landing",
+    "start:storybook": "nx storybook ui",
     "nx": "nx"
   },
   "private": true,

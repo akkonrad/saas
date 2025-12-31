@@ -1,4 +1,6 @@
 import type { Decorator, Preview } from '@storybook/angular';
+// Import Storybook-specific styles (Tailwind v4 + DaisyUI)
+import './styles.css';
 
 // Decorator to apply DaisyUI theme
 const withTheme: Decorator = (storyFn, context) => {

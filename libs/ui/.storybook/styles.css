@@ -1,17 +1,11 @@
-/* UI Library Global Styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Tailwind CSS and DaisyUI for Storybook */
+@import 'tailwindcss';
 
-/*
- * DaisyUI Theme Support
- * Applications can override these by configuring themes in their tailwind.config.js
- * Components will automatically use the active theme's CSS custom properties
- */
+/* DaisyUI Theme Support */
+@plugin "daisyui";
 
-/* Custom component styles that use DaisyUI theme variables */
+/* Custom component styles from the main styles file */
 @layer components {
-  /* Example: Custom variants using theme colors */
   .ui-custom-variant {
     background-color: oklch(var(--b1));
     color: oklch(var(--bc));
@@ -20,12 +14,6 @@
 
 /* Glass effect utilities */
 @layer utilities {
-  /*
-   * Glass morphism utilities
-   * Usage: Add these classes to create glass/frosted glass effects
-   * Example: <ui-header class="ui-glass-100">
-   */
-
   /* Light glass effect */
   .ui-glass-50 {
     background-color: rgba(255, 255, 255, 0.5);

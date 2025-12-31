@@ -1,0 +1,154 @@
+<!-- Buttons variant -->
+@if (variant() === 'buttons') {
+  <div [class]="toggleClasses" role="group" aria-label="Theme toggle">
+    <button
+      type="button"
+      [class]="getButtonClasses('light')"
+      (click)="toggleTheme('light')"
+      [attr.aria-pressed]="currentTheme() === 'light'"
+      aria-label="Light theme"
+    >
+      <!-- Sun icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      [class]="getButtonClasses('dark')"
+      (click)="toggleTheme('dark')"
+      [attr.aria-pressed]="currentTheme() === 'dark'"
+      aria-label="Dark theme"
+    >
+      <!-- Moon icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    </button>
+  </div>
+}
+
+<!-- Toggle switch variant -->
+@if (variant() === 'toggle-switch') {
+  <label class="toggle text-base-content">
+    <input
+      type="checkbox"
+      [checked]="currentTheme() === 'dark'"
+      (change)="toggleTheme(currentTheme() === 'light' ? 'dark' : 'light')"
+      aria-label="Toggle theme"
+    />
+    <!-- Sun icon (light theme) -->
+    <svg
+      aria-label="Light theme"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2"></path>
+      <path d="M12 20v2"></path>
+      <path d="m4.93 4.93 1.41 1.41"></path>
+      <path d="m17.66 17.66 1.41 1.41"></path>
+      <path d="M2 12h2"></path>
+      <path d="M20 12h2"></path>
+      <path d="m6.34 17.66-1.41 1.41"></path>
+      <path d="m19.07 4.93-1.41 1.41"></path>
+    </svg>
+    <!-- Moon icon (dark theme) -->
+    <svg
+      aria-label="Dark theme"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>
+  </label>
+}
+
+<!-- Icon button variant -->
+@if (variant() === 'icon-button') {
+  <button
+    type="button"
+    class="btn btn-ghost btn-circle"
+    (click)="toggleTheme(currentTheme() === 'light' ? 'dark' : 'light')"
+    [attr.aria-label]="currentTheme() === 'light' ? 'Switch to dark theme' : 'Switch to light theme'"
+  >
+    @if (currentTheme() === 'light') {
+      <!-- Sun icon for light theme -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+    } @else {
+      <!-- Moon icon for dark theme -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    }
+  </button>
+}
