@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "problem": "Problem",
+    "solution": "Rozwiązanie",
+    "how_it_works": "Jak to działa",
+    "for_who": "Dla kogo",
+    "why_me": "Dlaczego ja",
+    "team": "Zespół",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "badge": "Automatyzacja dla MSP",
+    "title": "Twoi ludzie przepisują dane z maila do Excela. Dzisiaj.",
+    "subtitle": "Budujemy automatyzacje, które robią to za nich. Bez zatrudniania kolejnej osoby. Bez kupowania pudełkowego softu, który \"prawie pasuje\".",
+    "cta_primary": "Porozmawiajmy",
+    "cta_secondary": "Jak to działa?",
+    "stat_time_label": "średnio miesięcznie\ntraconego czasu",
+    "stat1_label": "Zaoszczędzony czas",
+    "stat2_label": "Zautomatyzowane procesy",
+    "tagline": "Automatyzacje dla MSP - żeby Twój zespół mógł robić prawdziwą pracę, nie klikanie.",
+    "bubble_time_saved": "Zaoszczędzony czas",
+    "bubble_emails": "E-maile",
+    "bubble_emails_auto": "Automatycznie",
+    "bubble_copypaste": "Koniec z",
+    "bubble_crm_auto": "Auto-aktualizacja",
+    "bubble_systems": "Systemy",
+    "bubble_connected": "Połączone"
+  },
+  "problem": {
+    "title": "20 godzin miesięcznie. Tyle Twój zespół traci na rzeczy, które powinny robić się same.",
+    "item1_title": "Kopiuj-wklej z systemu do systemu",
+    "item1_desc": "Ręczne przepisywanie danych między aplikacjami, które powinny się ze sobą komunikować.",
+    "item2_title": "Wysyłanie tych samych maili",
+    "item2_desc": "Potwierdzenia, przypomnienia, follow-upy - wszystko ręcznie, za każdym razem.",
+    "item3_title": "Sprawdzanie stanów magazynowych",
+    "item3_desc": "Ręczne weryfikowanie dostępności, zamiast automatycznych alertów i aktualizacji.",
+    "item4_title": "Aktualizowanie CRM-a",
+    "item4_desc": "Po każdej rozmowie ktoś musi pamiętać, żeby wpisać notatkę. I często zapomina.",
+    "not_work": "To nie jest praca.",
+    "its_clicking": "To jest klikanie.",
+    "full_rate": "A Ty płacisz za to pełną stawkę.",
+    "reason": "Nie dlatego, że Twoi ludzie są leniwi. Dlatego, że nikt nigdy nie połączył tych systemów w jedną całość."
+  },
+  "solution": {
+    "title": "Jak pomagamy?",
+    "description": "Tworzymy dedykowane rozwiązania automatyzacji dopasowane do Twoich procesów biznesowych",
+    "benefit1_title": "Spotkanie zrozumienia potrzeb",
+    "benefit1_desc": "Poznajemy Twoje procesy i identyfikujemy możliwości automatyzacji",
+    "benefit2_title": "Dedykowany projekt automatyzacji",
+    "benefit2_desc": "Projektujemy rozwiązanie dopasowane do Twoich wymagań",
+    "benefit3_title": "Integracja z istniejącymi systemami",
+    "benefit3_desc": "Łączymy Twoje narzędzia bez ich wymiany",
+    "benefit4_title": "Samodzielność po wdrożeniu",
+    "benefit4_desc": "Po wdrożeniu jesteś niezależny"
+  },
+  "how_it_works": {
+    "title": "Jak to działa?",
+    "step1_title": "Bezpłatna 30-minutowa konsultacja",
+    "step1_desc": "Poznajemy Twoje wyzwania i możliwości automatyzacji",
+    "step2_title": "Propozycja rozwiązania",
+    "step2_desc": "Przedstawiamy plan i wycenę dedykowanego rozwiązania",
+    "step3_title": "Wdrożenie i przekazanie",
+    "step3_desc": "Tworzymy automatyzację i przekazujemy ją w Twoje ręce"
+  },
+  "for_who": {
+    "title": "Dla kogo?",
+    "ecommerce_title": "E-commerce",
+    "ecommerce_desc": "Automatyzacja obsługi zamówień i synchronizacji magazynu",
+    "ecommerce_step": {
+      "1": "Zamówienie",
+      "2": "Synchronizacja",
+      "3": "Wysyłka"
+    },
+    "logistics_title": "Logistyka",
+    "logistics_desc": "Automatyzacja raportowania i śledzenia przesyłek",
+    "logistics_step": {
+      "1": "Tracking",
+      "2": "Raportowanie",
+      "3": "Analiza"
+    },
+    "b2b_title": "Usługi B2B",
+    "b2b_desc": "Automatyzacja procesów sprzedażowych i obsługi klienta",
+    "b2b_step": {
+      "1": "Lead",
+      "2": "Oferta",
+      "3": "Kontrakt"
+    }
+  },
+  "why_me": {
+    "title": "Dlaczego warto z nami współpracować?",
+    "problem1_title": "Gotowe rozwiązania nie obsługują Twoich przypadków brzegowych",
+    "problem1_desc": "Mamy doświadczenie w tworzeniu dedykowanych rozwiązań",
+    "problem2_title": "Nie integrują się z przestarzałymi systemami",
+    "problem2_desc": "Integrujemy wszystko, nawet legacy systemy",
+    "problem3_title": "Słabe wsparcie po wdrożeniu",
+    "problem3_desc": "Zapewniamy pełną dokumentację i wsparcie"
+  },
+  "team": {
+    "subtitle": "Poznaj nas",
+    "title": "Zespół KOALKA",
+    "description": "Łączymy doświadczenie w technologii z praktycznym podejściem do biznesu. Nie teoretyzujemy - budujemy rozwiązania, które działają.",
+    "member1_name": "Konrad",
+    "member1_role": "Współzałożyciel, Solution Architect",
+    "member1_desc": "18+ lat doświadczenia. Buduje startup AI automatyzujący badania kliniczne. Pracował w Szwajcarii dla klientów z sektora finansowego i medycznego.",
+    "member2_name": "Aleksander",
+    "member2_role": "Współzałożyciel, Automation Specialist",
+    "member2_desc": "12+ lat doświadczenia. Projekty dla branży medycznej i finansowej. Budował systemy enterprise i aplikacje dla startupów.",
+    "member3_name": "Kamil",
+    "member3_role": "Współzałożyciel, Lead Developer",
+    "member3_desc": "Specjalizacja w budowie skalowalnych aplikacji. Doświadczenie w startupach technologicznych oraz projektach enterprise."
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "description": "Umów się na bezpłatną konsultację i poznaj możliwości automatyzacji w Twojej firmie",
+    "form_name": "Imię",
+    "form_name_placeholder": "Jan",
+    "form_email": "Email",
+    "form_email_placeholder": "jan@firma.pl",
+    "form_company": "Firma (opcjonalne)",
+    "form_company_placeholder": "Nazwa firmy",
+    "form_message": "W jakim obszarze chciałbyś zacząć automatyzację? (opcjonalnie)",
+    "form_message_placeholder": "Opowiedz nam o swoim problemie...",
+    "form_submit": "Wyślij i umówmy się na rozmowę",
+    "form_error_required": "To pole jest wymagane",
+    "form_error_email": "Podaj poprawny adres email",
+    "form_success": "Dziękujemy! Skontaktujemy się wkrótce."
+  },
+  "footer": {
+    "tagline": "Automatyzujemy procesy, żebyś mógł skupić się na rozwoju biznesu",
+    "copyright": "© 2025 Koalka. Wszelkie prawa zastrzeżone."
+  }
+}

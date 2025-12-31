@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "problem": "Problem",
+    "solution": "Solution",
+    "how_it_works": "How it works",
+    "for_who": "For whom",
+    "why_me": "Why us",
+    "team": "Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Automation for SMBs",
+    "title": "Your people are copying data from email to Excel. Today.",
+    "subtitle": "We build automations that do it for them. Without hiring another person. Without buying off-the-shelf software that \"almost fits\".",
+    "cta_primary": "Let's talk",
+    "cta_secondary": "How it works?",
+    "stat_time_label": "average monthly\nwasted time",
+    "stat1_label": "Time saved",
+    "stat2_label": "Automated processes",
+    "tagline": "Automations for SMBs - so your team can do real work, not clicking.",
+    "bubble_time_saved": "Time Saved",
+    "bubble_emails": "Emails",
+    "bubble_emails_auto": "Automated",
+    "bubble_copypaste": "No more",
+    "bubble_crm_auto": "Auto-update",
+    "bubble_systems": "Systems",
+    "bubble_connected": "Connected"
+  },
+  "problem": {
+    "title": "20 hours a month. That's how much your team loses on things that should happen automatically.",
+    "item1_title": "Copy-paste from system to system",
+    "item1_desc": "Manually copying data between apps that should communicate with each other.",
+    "item2_title": "Sending the same emails",
+    "item2_desc": "Confirmations, reminders, follow-ups - all manual, every time.",
+    "item3_title": "Checking inventory levels",
+    "item3_desc": "Manual availability checks instead of automatic alerts and updates.",
+    "item4_title": "Updating the CRM",
+    "item4_desc": "After every call, someone has to remember to add a note. And often forgets.",
+    "not_work": "This is not work.",
+    "its_clicking": "This is just clicking.",
+    "full_rate": "And you're paying full rate for it.",
+    "reason": "Not because your people are lazy. Because no one has ever connected those systems into one whole."
+  },
+  "solution": {
+    "title": "How we help?",
+    "description": "We create dedicated automation solutions tailored to your business processes",
+    "benefit1_title": "Understanding meeting",
+    "benefit1_desc": "We learn your processes and identify automation opportunities",
+    "benefit2_title": "Dedicated automation project",
+    "benefit2_desc": "We design a solution tailored to your requirements",
+    "benefit3_title": "Integration with existing systems",
+    "benefit3_desc": "We connect your tools without replacing them",
+    "benefit4_title": "Independence after implementation",
+    "benefit4_desc": "After implementation, you are independent"
+  },
+  "how_it_works": {
+    "title": "How does it work?",
+    "step1_title": "Free 30-minute consultation",
+    "step1_desc": "We learn about your challenges and automation opportunities",
+    "step2_title": "Solution proposal",
+    "step2_desc": "We present a plan and quote for a dedicated solution",
+    "step3_title": "Implementation and handover",
+    "step3_desc": "We create the automation and hand it over to you"
+  },
+  "for_who": {
+    "title": "For whom?",
+    "ecommerce_title": "E-commerce",
+    "ecommerce_desc": "Order processing and inventory synchronization automation",
+    "ecommerce_step": {
+      "1": "Order",
+      "2": "Sync",
+      "3": "Shipping"
+    },
+    "logistics_title": "Logistics",
+    "logistics_desc": "Reporting and shipment tracking automation",
+    "logistics_step": {
+      "1": "Tracking",
+      "2": "Reporting",
+      "3": "Analysis"
+    },
+    "b2b_title": "B2B Services",
+    "b2b_desc": "Sales processes and customer service automation",
+    "b2b_step": {
+      "1": "Lead",
+      "2": "Quote",
+      "3": "Contract"
+    }
+  },
+  "why_me": {
+    "title": "Why work with us?",
+    "problem1_title": "Off-the-shelf solutions don't handle your edge cases",
+    "problem1_desc": "We have experience creating dedicated solutions",
+    "problem2_title": "They don't integrate with legacy systems",
+    "problem2_desc": "We integrate everything, even legacy systems",
+    "problem3_title": "Poor post-implementation support",
+    "problem3_desc": "We provide full documentation and support"
+  },
+  "team": {
+    "subtitle": "Meet us",
+    "title": "Team KOALKA",
+    "description": "We combine technology experience with a practical approach to business. We don't theorize - we build solutions that work.",
+    "member1_name": "Konrad",
+    "member1_role": "Co-founder, Solution Architect",
+    "member1_desc": "18+ years of experience. Building an AI startup automating clinical trials. Worked in Switzerland for clients in financial and medical sectors.",
+    "member2_name": "Aleksander",
+    "member2_role": "Co-founder, Automation Specialist",
+    "member2_desc": "12+ years of experience. Projects for medical and financial industries. Built enterprise systems and startup applications.",
+    "member3_name": "Kamil",
+    "member3_role": "Co-founder, Lead Developer",
+    "member3_desc": "Specializes in building scalable applications. Experience in tech startups and enterprise projects."
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "Schedule a free consultation and discover automation possibilities for your company",
+    "form_name": "First name",
+    "form_name_placeholder": "John",
+    "form_email": "Email",
+    "form_email_placeholder": "john@company.com",
+    "form_company": "Company (optional)",
+    "form_company_placeholder": "Company name",
+    "form_message": "What area would you like to start automating? (optional)",
+    "form_message_placeholder": "Tell us about your problem...",
+    "form_submit": "Send and let's schedule a call",
+    "form_error_required": "This field is required",
+    "form_error_email": "Please enter a valid email address",
+    "form_success": "Thank you! We'll be in touch soon."
+  },
+  "footer": {
+    "tagline": "We automate processes so you can focus on growing your business",
+    "copyright": "© 2025 Koalka. All rights reserved."
+  }
+}

@@ -1,0 +1,24 @@
+<ui-section id="jak-to-dziala">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+      {{ 'how_it_works.title' | translate }}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <app-step-card
+        [stepNumber]="1"
+        [title]="'how_it_works.step1_title' | translate"
+        [description]="'how_it_works.step1_desc' | translate"
+      />
+      <app-step-card
+        [stepNumber]="2"
+        [title]="'how_it_works.step2_title' | translate"
+        [description]="'how_it_works.step2_desc' | translate"
+      />
+      <app-step-card
+        [stepNumber]="3"
+        [title]="'how_it_works.step3_title' | translate"
+        [description]="'how_it_works.step3_desc' | translate"
+      />
+    </div>
+  </div>
+</ui-section>

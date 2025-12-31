@@ -1,0 +1,9 @@
+<div class="stats shadow-xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/10">
+  <div class="stat">
+    <div class="stat-title text-base-content/70">{{ label() | translate }}</div>
+    <div class="stat-value text-primary">{{ value() }}</div>
+    @if (change()) {
+      <div class="stat-desc text-success">{{ change() }}</div>
+    }
+  </div>
+</div>

@@ -21,7 +21,7 @@
           }
         ],
         "styles": [
-          "apps/koalka/landing/src/styles.scss"
+          "apps/koalka/landing/src/styles.css"
         ],
         "server": "apps/koalka/landing/src/main.server.ts",
         "ssr": {

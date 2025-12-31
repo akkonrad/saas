@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@plugin "daisyui";
+@import "./themes.css";
+
+/* Smooth scroll for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,86 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+  <!-- Success Message -->
+  @if (submitSuccess()) {
+    <div class="alert alert-success mb-6">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      <span>{{ 'contact.form_success' | translate }}</span>
+    </div>
+  }
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Name Field -->
+    <div class="space-y-2">
+      <ui-label for="name" [required]="true">
+        {{ 'contact.form_name' | translate }}
+      </ui-label>
+      <ui-input
+        id="name"
+        formControlName="name"
+        [placeholder]="'contact.form_name_placeholder' | translate"
+        [hasError]="hasError('name')"
+      />
+      @if (hasError('name')) {
+        <span class="text-error text-sm">{{ 'contact.form_error_required' | translate }}</span>
+      }
+    </div>
+
+    <!-- Email Field -->
+    <div class="space-y-2">
+      <ui-label for="email" [required]="true">
+        {{ 'contact.form_email' | translate }}
+      </ui-label>
+      <ui-input
+        id="email"
+        type="email"
+        formControlName="email"
+        [placeholder]="'contact.form_email_placeholder' | translate"
+        [hasError]="hasError('email')"
+      />
+      @if (hasError('email') && emailControl?.hasError('required')) {
+        <span class="text-error text-sm">{{ 'contact.form_error_required' | translate }}</span>
+      }
+      @if (hasError('email') && emailControl?.hasError('email')) {
+        <span class="text-error text-sm">{{ 'contact.form_error_email' | translate }}</span>
+      }
+    </div>
+  </div>
+
+  <!-- Company Field -->
+  <div class="space-y-2">
+    <ui-label for="company">
+      {{ 'contact.form_company' | translate }}
+    </ui-label>
+    <ui-input
+      id="company"
+      formControlName="company"
+      [placeholder]="'contact.form_company_placeholder' | translate"
+    />
+  </div>
+
+  <!-- Message Field -->
+  <div class="space-y-2">
+    <ui-label for="message">
+      {{ 'contact.form_message' | translate }}
+    </ui-label>
+    <ui-textarea
+      id="message"
+      formControlName="message"
+      [placeholder]="'contact.form_message_placeholder' | translate"
+      [rows]="5"
+    />
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <ui-button
+      type="submit"
+      variant="primary"
+      size="lg"
+      [loading]="isSubmitting()"
+      [disabled]="isSubmitting()">
+      {{ 'contact.form_submit' | translate }}
+    </ui-button>
+  </div>
+</form>

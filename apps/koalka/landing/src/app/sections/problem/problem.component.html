@@ -1,0 +1,42 @@
+<ui-section id="problem" variant="muted">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+        {{ 'problem.title' | translate }}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <app-feature-card
+        iconType="clipboard"
+        [title]="'problem.item1_title' | translate"
+        [description]="'problem.item1_desc' | translate"
+      />
+      <app-feature-card
+        iconType="envelope"
+        [title]="'problem.item2_title' | translate"
+        [description]="'problem.item2_desc' | translate"
+      />
+      <app-feature-card
+        iconType="box"
+        [title]="'problem.item3_title' | translate"
+        [description]="'problem.item3_desc' | translate"
+      />
+      <app-feature-card
+        iconType="database"
+        [title]="'problem.item4_title' | translate"
+        [description]="'problem.item4_desc' | translate"
+      />
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-6 text-center">
+      <p class="text-lg text-base-content/70">
+        {{ 'problem.not_work' | translate }} <span class="text-base-content font-medium">{{ 'problem.its_clicking' | translate }}</span>
+      </p>
+      <p class="text-lg text-base-content/70">{{ 'problem.full_rate' | translate }}</p>
+      <p class="text-sm text-base-content/70 border-l-2 border-base-content pl-4 text-left max-w-md mx-auto">
+        {{ 'problem.reason' | translate }}
+      </p>
+    </div>
+  </div>
+</ui-section>
