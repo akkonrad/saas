@@ -1,1 +1,73 @@
 // Header styles
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-content focus:px-4 focus:py-2 focus:rounded-lg;
+}
+
+.header-navbar {
+  @apply navbar bg-base-100/60 backdrop-blur-2xl shadow-sm fixed top-0 z-50 border-b border-base-content/5;
+}
+
+.header-container {
+  @apply container mx-auto px-4 flex items-center justify-between h-16 md:h-20;
+}
+
+.logo-wrapper {
+  @apply flex items-center gap-2;
+}
+
+.logo-link {
+  @apply flex items-center gap-2 hover:opacity-80 transition-opacity;
+}
+
+.logo-icon {
+  @apply w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20;
+}
+
+.logo-letter {
+  @apply text-primary-content font-bold text-sm;
+}
+
+.logo-text {
+  @apply text-lg font-semibold tracking-tight;
+}
+
+.logo-text-brand {
+  @apply text-primary;
+}
+
+.nav-desktop {
+  @apply hidden lg:flex items-center gap-8;
+}
+
+.nav-link {
+  @apply text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer;
+}
+
+.header-actions {
+  @apply flex items-center gap-2;
+}
+
+.cta-button-sm {
+  @apply btn btn-primary btn-sm hidden md:flex;
+}
+
+.mobile-menu-btn {
+  @apply btn btn-ghost lg:hidden;
+}
+
+.mobile-menu-icon {
+  @apply w-6 h-6;
+}
+
+.mobile-menu {
+  @apply absolute top-full left-0 right-0 bg-base-100 shadow-xl lg:hidden;
+}
+
+.mobile-menu-list {
+  @apply menu p-4 gap-2;
+}
+
+.mobile-cta-button {
+  @apply btn btn-primary btn-block;
+}

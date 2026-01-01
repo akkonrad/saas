@@ -1,51 +1,51 @@
-<section id="hero" class="pt-28 md:pt-36 pb-20 md:pb-28 relative overflow-hidden" aria-labelledby="hero-title">
+<section id="hero" class="hero-section" aria-labelledby="hero-title">
   <!-- Background gradient glow -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+  <div class="background-glow" aria-hidden="true"></div>
 
-  <div class="container mx-auto px-4 md:px-6 relative">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <div class="hero-container">
+    <div class="hero-grid">
       <!-- Left Content -->
-      <div class="space-y-8">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm text-primary">
+      <div class="hero-content">
+        <div class="hero-badge">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
           </svg>
           {{ 'hero.badge' | translate }}
         </div>
 
-        <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+        <h1 id="hero-title" class="hero-title">
           {{ 'hero.title' | translate }}
         </h1>
-        <p class="text-lg md:text-xl text-base-content/70 max-w-xl leading-relaxed">
+        <p class="hero-subtitle">
           {{ 'hero.subtitle' | translate }}
         </p>
 
         <!-- CTAs -->
-        <div class="flex flex-wrap gap-4" role="group" aria-label="Call to action buttons">
-          <a href="#kontakt" class="btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/25">
+        <div class="hero-ctas" role="group" aria-label="Call to action buttons">
+          <a href="#kontakt" class="cta-button">
             {{ 'hero.cta_primary' | translate }}
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </a>
-          <a href="#jak-to-dziala" class="btn btn-outline btn-lg">
+          <a href="#jak-to-dziala" class="cta-button-outline">
             {{ 'hero.cta_secondary' | translate }}
           </a>
         </div>
 
         <!-- Stats -->
-        <div class="flex items-center gap-6 pt-4" role="group" aria-label="Key statistics">
-          <div class="flex items-center gap-3">
-            <span class="text-4xl md:text-5xl font-bold text-primary" aria-label="20 hours">20h</span>
-            <span class="text-sm text-base-content/70 leading-tight">
+        <div class="hero-stats" role="group" aria-label="Key statistics">
+          <div class="stat-item">
+            <span class="stat-value" aria-label="20 hours">20h</span>
+            <span class="stat-label">
               {{ 'hero.stat_time_label' | translate }}
             </span>
           </div>
-          <div class="w-px h-12 bg-base-content/20" aria-hidden="true"></div>
-          <div class="flex gap-1" aria-hidden="true">
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-bars" aria-hidden="true">
             @for (bar of [1, 2, 3, 4, 5]; track bar) {
               <div
-                class="w-2 bg-gradient-to-t from-primary/50 to-primary rounded-sm"
+                class="stat-bar"
                 [style.height.px]="12 + bar * 8"
               ></div>
             }
@@ -54,13 +54,13 @@
       </div>
 
       <!-- Right Content - Interactive Bubbles (decorative) -->
-      <div class="relative hidden lg:block" (mousemove)="onBubbleAreaMouseMove($event)" (mouseleave)="onBubbleAreaMouseLeave()" aria-hidden="true">
-        <div class="aspect-square max-w-lg mx-auto relative">
+      <div class="bubble-area" (mousemove)="onBubbleAreaMouseMove($event)" (mouseleave)="onBubbleAreaMouseLeave()" aria-hidden="true">
+        <div class="bubble-container">
           <!-- Background glow -->
-          <div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+          <div class="bubble-glow"></div>
 
           <!-- Central connecting lines (decorative) -->
-          <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 400" aria-hidden="true">
+          <svg class="bubble-svg" viewBox="0 0 400 400" aria-hidden="true">
             <defs>
               <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style="stop-color:var(--color-primary);stop-opacity:0.5" />
@@ -76,101 +76,86 @@
 
           <!-- Central hub -->
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30 flex items-center justify-center transition-transform duration-200 ease-out"
+            class="central-hub"
             [style.transform]="'translate(calc(-50% + ' + mouseX() * 10 + 'px), calc(-50% + ' + mouseY() * 10 + 'px))'"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="central-hub-icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
             </svg>
           </div>
 
           <!-- Bubble: Time Saved -->
-          <div
-            class="absolute top-[10%] left-[5%] bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out"
-            [style.transform]="getBubbleTransform(25)"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-success/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-success">
+          <div class="bubble-card bubble-card-time" [style.transform]="getBubbleTransform(25)">
+            <div class="bubble-content">
+              <div class="bubble-icon bubble-icon-success">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bubble-icon-svg bubble-icon-svg-success">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
               </div>
               <div>
-                <div class="text-xs text-base-content/60">{{ 'hero.bubble_time_saved' | translate }}</div>
-                <div class="text-lg font-bold text-success">+20h</div>
+                <div class="bubble-label">{{ 'hero.bubble_time_saved' | translate }}</div>
+                <div class="bubble-value bubble-value-success">+20h</div>
               </div>
             </div>
           </div>
 
           <!-- Bubble: Automated Emails -->
-          <div
-            class="absolute top-[5%] right-[10%] bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out"
-            [style.transform]="getBubbleTransform(35)"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary">
+          <div class="bubble-card bubble-card-emails" [style.transform]="getBubbleTransform(35)">
+            <div class="bubble-content">
+              <div class="bubble-icon bubble-icon-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bubble-icon-svg bubble-icon-svg-primary">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                 </svg>
               </div>
               <div>
-                <div class="text-xs text-base-content/60">{{ 'hero.bubble_emails' | translate }}</div>
-                <div class="text-sm font-semibold text-base-content">{{ 'hero.bubble_emails_auto' | translate }}</div>
+                <div class="bubble-label">{{ 'hero.bubble_emails' | translate }}</div>
+                <div class="bubble-text">{{ 'hero.bubble_emails_auto' | translate }}</div>
               </div>
             </div>
           </div>
 
           <!-- Bubble: No Copy-Paste -->
-          <div
-            class="absolute top-[55%] right-[0%] bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out"
-            [style.transform]="getBubbleTransform(20)"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-error/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-error">
+          <div class="bubble-card bubble-card-copypaste" [style.transform]="getBubbleTransform(20)">
+            <div class="bubble-content">
+              <div class="bubble-icon bubble-icon-error">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bubble-icon-svg bubble-icon-svg-error">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
                 </svg>
               </div>
               <div>
-                <div class="text-xs text-base-content/60">{{ 'hero.bubble_copypaste' | translate }}</div>
-                <div class="text-sm font-semibold text-base-content line-through decoration-error">Copy-paste</div>
+                <div class="bubble-label">{{ 'hero.bubble_copypaste' | translate }}</div>
+                <div class="bubble-text-strikethrough">Copy-paste</div>
               </div>
             </div>
           </div>
 
           <!-- Bubble: CRM Updated -->
-          <div
-            class="absolute bottom-[15%] right-[15%] bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out"
-            [style.transform]="getBubbleTransform(30)"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-info/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-info">
+          <div class="bubble-card bubble-card-crm" [style.transform]="getBubbleTransform(30)">
+            <div class="bubble-content">
+              <div class="bubble-icon bubble-icon-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bubble-icon-svg bubble-icon-svg-info">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                 </svg>
               </div>
               <div>
-                <div class="text-xs text-base-content/60">CRM</div>
-                <div class="text-sm font-semibold text-info">{{ 'hero.bubble_crm_auto' | translate }}</div>
+                <div class="bubble-label">CRM</div>
+                <div class="bubble-value bubble-value-info">{{ 'hero.bubble_crm_auto' | translate }}</div>
               </div>
             </div>
           </div>
 
           <!-- Bubble: Systems Connected -->
-          <div
-            class="absolute bottom-[20%] left-[0%] bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out"
-            [style.transform]="getBubbleTransform(15)"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-accent">
+          <div class="bubble-card bubble-card-systems" [style.transform]="getBubbleTransform(15)">
+            <div class="bubble-content">
+              <div class="bubble-icon bubble-icon-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bubble-icon-svg bubble-icon-svg-accent">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
                 </svg>
               </div>
               <div>
-                <div class="text-xs text-base-content/60">{{ 'hero.bubble_systems' | translate }}</div>
-                <div class="text-sm font-semibold text-accent">{{ 'hero.bubble_connected' | translate }}</div>
+                <div class="bubble-label">{{ 'hero.bubble_systems' | translate }}</div>
+                <div class="bubble-value bubble-value-accent">{{ 'hero.bubble_connected' | translate }}</div>
               </div>
             </div>
           </div>

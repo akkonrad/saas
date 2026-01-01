@@ -1,53 +1,53 @@
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-content focus:px-4 focus:py-2 focus:rounded-lg">
+<a href="#main-content" class="skip-link">
   Skip to main content
 </a>
-<header class="navbar bg-base-100/60 backdrop-blur-2xl shadow-sm fixed top-0 z-50 border-b border-base-content/5" role="banner">
-  <div class="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+<header class="header-navbar" role="banner">
+  <div class="header-container">
     <!-- Logo -->
-    <div class="flex items-center gap-2">
-      <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="KOALKA - Strona główna">
-        <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" aria-hidden="true">
-          <span class="text-primary-content font-bold text-sm">K</span>
+    <div class="logo-wrapper">
+      <a href="/" class="logo-link" aria-label="KOALKA - Strona główna">
+        <div class="logo-icon" aria-hidden="true">
+          <span class="logo-letter">K</span>
         </div>
-        <span class="text-lg font-semibold tracking-tight">
-          <span class="text-primary">KOALKA</span>
+        <span class="logo-text">
+          <span class="logo-text-brand">KOALKA</span>
         </span>
       </a>
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
-      <a href="#hero" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">Start</a>
-      <a href="#problem" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.problem' | translate }}</a>
-      <a href="#rozwiazanie" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.solution' | translate }}</a>
-      <a href="#jak-to-dziala" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.how_it_works' | translate }}</a>
-      <a href="#dla-kogo" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.for_who' | translate }}</a>
-      <a href="#zespol" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.team' | translate }}</a>
-      <a href="#kontakt" class="text-sm text-base-content/70 hover:text-base-content transition-colors cursor-pointer">{{ 'nav.contact' | translate }}</a>
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="#hero" class="nav-link">Start</a>
+      <a href="#problem" class="nav-link">{{ 'nav.problem' | translate }}</a>
+      <a href="#rozwiazanie" class="nav-link">{{ 'nav.solution' | translate }}</a>
+      <a href="#jak-to-dziala" class="nav-link">{{ 'nav.how_it_works' | translate }}</a>
+      <a href="#dla-kogo" class="nav-link">{{ 'nav.for_who' | translate }}</a>
+      <a href="#zespol" class="nav-link">{{ 'nav.team' | translate }}</a>
+      <a href="#kontakt" class="nav-link">{{ 'nav.contact' | translate }}</a>
     </nav>
 
     <!-- Actions: Language, Theme, CTA -->
-    <div class="flex items-center gap-2">
+    <div class="header-actions">
       <app-language-switcher />
       <app-theme-toggle />
 
-      <a href="#kontakt" class="btn btn-primary btn-sm hidden md:flex">
+      <a href="#kontakt" class="cta-button-sm">
         {{ 'hero.cta_primary' | translate }}
       </a>
 
       <!-- Mobile menu toggle -->
       <button
-        class="btn btn-ghost lg:hidden"
+        class="mobile-menu-btn"
         (click)="toggleMobileMenu()"
         [attr.aria-expanded]="mobileMenuOpen()"
         aria-controls="mobile-menu"
         aria-label="Toggle navigation menu">
         @if (mobileMenuOpen()) {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         } @else {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         }
@@ -57,8 +57,8 @@
 
   <!-- Mobile Menu Dropdown -->
   @if (mobileMenuOpen()) {
-    <nav id="mobile-menu" class="absolute top-full left-0 right-0 bg-base-100 shadow-xl lg:hidden" aria-label="Mobile navigation">
-      <ul class="menu p-4 gap-2" role="list">
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <ul class="mobile-menu-list" role="list">
         <li><a href="#hero" (click)="closeMobileMenu()">Start</a></li>
         <li><a href="#problem" (click)="closeMobileMenu()">{{ 'nav.problem' | translate }}</a></li>
         <li><a href="#rozwiazanie" (click)="closeMobileMenu()">{{ 'nav.solution' | translate }}</a></li>
@@ -67,7 +67,7 @@
         <li><a href="#zespol" (click)="closeMobileMenu()">{{ 'nav.team' | translate }}</a></li>
         <li><a href="#kontakt" (click)="closeMobileMenu()">{{ 'nav.contact' | translate }}</a></li>
         <li class="mt-2">
-          <a href="#kontakt" (click)="closeMobileMenu()" class="btn btn-primary btn-block">
+          <a href="#kontakt" (click)="closeMobileMenu()" class="mobile-cta-button">
             {{ 'hero.cta_primary' | translate }}
           </a>
         </li>
