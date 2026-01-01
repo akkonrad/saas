@@ -128,5 +128,18 @@
   "footer": {
     "tagline": "Automatyzujemy procesy, żebyś mógł skupić się na rozwoju biznesu",
     "copyright": "© 2025 Koalka. Wszelkie prawa zastrzeżone."
+  },
+  "seo": {
+    "title": "KOALKA - Automatyzacja procesów dla MSP | Oszczędź 20h miesięcznie",
+    "description": "Budujemy dedykowane automatyzacje dla małych i średnich przedsiębiorstw. Integrujemy systemy, eliminujemy ręczną pracę i oszczędzamy Twój czas. Bezpłatna konsultacja.",
+    "keywords": "automatyzacja, automatyzacja procesów, MSP, małe firmy, integracja systemów, oszczędność czasu, CRM, e-commerce, logistyka, B2B",
+    "og_title": "KOALKA - Automatyzacja procesów dla MSP",
+    "og_description": "Budujemy dedykowane automatyzacje dla małych i średnich przedsiębiorstw. Oszczędź 20h miesięcznie dzięki naszym rozwiązaniom.",
+    "og_image_alt": "KOALKA - Automatyzacja dla MSP",
+    "twitter_title": "KOALKA - Automatyzacja procesów dla MSP",
+    "twitter_description": "Budujemy dedykowane automatyzacje dla małych i średnich przedsiębiorstw. Oszczędź 20h miesięcznie.",
+    "twitter_image_alt": "KOALKA - Automatyzacja dla MSP",
+    "language": "Polish",
+    "og_locale": "pl_PL"
   }
 }
