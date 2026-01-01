@@ -1,1 +1,29 @@
 // Feature card styles
+
+.feature-card {
+  @apply card bg-base-200/50 border border-base-300 hover:border-base-content/20 transition-all duration-300 h-full;
+}
+
+.feature-card-body {
+  @apply card-body flex flex-col;
+}
+
+.feature-icon-container {
+  @apply w-12 h-12 rounded-xl bg-base-200 flex items-center justify-center shrink-0;
+}
+
+.feature-icon-svg {
+  @apply w-6 h-6 text-base-content/70;
+}
+
+.feature-icon-emoji {
+  @apply text-2xl;
+}
+
+.feature-title {
+  @apply font-semibold text-base-content mt-4 min-h-[3rem] flex items-start;
+}
+
+.feature-description {
+  @apply text-sm text-base-content/60 flex-1;
+}
