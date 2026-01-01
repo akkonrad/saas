@@ -128,5 +128,18 @@
   "footer": {
     "tagline": "We automate processes so you can focus on growing your business",
     "copyright": "© 2025 Koalka. All rights reserved."
+  },
+  "seo": {
+    "title": "KOALKA - Process Automation for SMBs | Save 20h per month",
+    "description": "We build dedicated automations for small and medium-sized businesses. We integrate systems, eliminate manual work, and save your time. Free consultation.",
+    "keywords": "automation, process automation, SMB, small business, system integration, time savings, CRM, e-commerce, logistics, B2B",
+    "og_title": "KOALKA - Process Automation for SMBs",
+    "og_description": "We build dedicated automations for small and medium-sized businesses. Save 20h per month with our solutions.",
+    "og_image_alt": "KOALKA - Automation for SMBs",
+    "twitter_title": "KOALKA - Process Automation for SMBs",
+    "twitter_description": "We build dedicated automations for small and medium-sized businesses. Save 20h per month.",
+    "twitter_image_alt": "KOALKA - Automation for SMBs",
+    "language": "English",
+    "og_locale": "en_US"
   }
 }
