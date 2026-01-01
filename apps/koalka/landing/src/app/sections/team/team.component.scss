@@ -1,1 +1,57 @@
 // Team section styles
+
+.team-header {
+  @apply text-center mb-12 md:mb-16;
+}
+
+.team-subtitle {
+  @apply text-sm uppercase tracking-wider text-primary mb-4;
+}
+
+.team-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-balance;
+}
+
+.team-description {
+  @apply mt-4 text-base-content/70 max-w-2xl mx-auto;
+}
+
+.team-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto;
+}
+
+.team-member {
+  @apply flex flex-col bg-base-200/50 backdrop-blur-sm rounded-2xl p-6 border border-base-300/50 text-center group hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300;
+}
+
+.team-member-photo {
+  @apply relative w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden bg-base-300 ring-2 ring-base-300/50 group-hover:ring-primary/50 transition-all;
+}
+
+.team-member-img {
+  @apply w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500;
+}
+
+.team-member-name {
+  @apply text-xl font-semibold;
+}
+
+.team-member-name-highlight {
+  @apply text-primary;
+}
+
+.team-member-role {
+  @apply text-sm text-primary mt-1;
+}
+
+.team-member-desc {
+  @apply text-xs text-base-content/70 mt-3 leading-relaxed flex-1;
+}
+
+.team-member-linkedin {
+  @apply inline-flex items-center justify-center gap-2 mt-4 text-sm text-base-content/70 hover:text-primary transition-colors;
+}
+
+.team-member-linkedin-icon {
+  @apply w-4 h-4;
+}

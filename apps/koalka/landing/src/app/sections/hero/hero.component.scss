@@ -1,1 +1,203 @@
 // Hero section styles
+
+.hero-section {
+  @apply pt-28 md:pt-36 pb-20 md:pb-28 relative overflow-hidden;
+}
+
+.background-glow {
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none;
+}
+
+.hero-container {
+  @apply container mx-auto px-4 md:px-6 relative;
+}
+
+.hero-grid {
+  @apply grid lg:grid-cols-2 gap-12 lg:gap-16 items-center;
+}
+
+.hero-content {
+  @apply space-y-8;
+}
+
+.hero-badge {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm text-primary;
+}
+
+.hero-title {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance;
+}
+
+.hero-subtitle {
+  @apply text-lg md:text-xl text-base-content/70 max-w-xl leading-relaxed;
+}
+
+.hero-ctas {
+  @apply flex flex-wrap gap-4;
+}
+
+.cta-button {
+  @apply btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/25;
+}
+
+.cta-button-outline {
+  @apply btn btn-outline btn-lg;
+}
+
+.hero-stats {
+  @apply flex items-center gap-6 pt-4;
+}
+
+.stat-item {
+  @apply flex items-center gap-3;
+}
+
+.stat-value {
+  @apply text-4xl md:text-5xl font-bold text-primary;
+}
+
+.stat-label {
+  @apply text-sm text-base-content/70 leading-tight;
+}
+
+.stat-divider {
+  @apply w-px h-12 bg-base-content/20;
+}
+
+.stat-bars {
+  @apply flex gap-1;
+}
+
+.stat-bar {
+  @apply w-2 bg-gradient-to-t from-primary/50 to-primary rounded-sm;
+}
+
+// Bubble area styles
+.bubble-area {
+  @apply relative hidden lg:block;
+}
+
+.bubble-container {
+  @apply aspect-square max-w-lg mx-auto relative;
+}
+
+.bubble-glow {
+  @apply absolute inset-0 bg-primary/10 rounded-full blur-3xl;
+}
+
+.bubble-svg {
+  @apply absolute inset-0 w-full h-full opacity-20;
+}
+
+.central-hub {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30 flex items-center justify-center transition-transform duration-200 ease-out;
+}
+
+.central-hub-icon {
+  @apply w-10 h-10 text-primary;
+}
+
+// Bubble card styles
+.bubble-card {
+  @apply absolute bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out;
+}
+
+.bubble-card-time {
+  @apply top-[10%] left-[5%];
+}
+
+.bubble-card-emails {
+  @apply top-[5%] right-[10%];
+}
+
+.bubble-card-copypaste {
+  @apply top-[55%] right-[0%];
+}
+
+.bubble-card-crm {
+  @apply bottom-[15%] right-[15%];
+}
+
+.bubble-card-systems {
+  @apply bottom-[20%] left-[0%];
+}
+
+.bubble-content {
+  @apply flex items-center gap-3;
+}
+
+.bubble-icon {
+  @apply w-10 h-10 rounded-xl flex items-center justify-center;
+}
+
+.bubble-icon-success {
+  @apply bg-success/20;
+}
+
+.bubble-icon-primary {
+  @apply bg-primary/20;
+}
+
+.bubble-icon-error {
+  @apply bg-error/20;
+}
+
+.bubble-icon-info {
+  @apply bg-info/20;
+}
+
+.bubble-icon-accent {
+  @apply bg-accent/20;
+}
+
+.bubble-icon-svg {
+  @apply w-5 h-5;
+}
+
+.bubble-icon-svg-success {
+  @apply text-success;
+}
+
+.bubble-icon-svg-primary {
+  @apply text-primary;
+}
+
+.bubble-icon-svg-error {
+  @apply text-error;
+}
+
+.bubble-icon-svg-info {
+  @apply text-info;
+}
+
+.bubble-icon-svg-accent {
+  @apply text-accent;
+}
+
+.bubble-label {
+  @apply text-xs text-base-content/60;
+}
+
+.bubble-value {
+  @apply text-lg font-bold;
+}
+
+.bubble-value-success {
+  @apply text-success;
+}
+
+.bubble-value-info {
+  @apply text-info;
+}
+
+.bubble-value-accent {
+  @apply text-accent;
+}
+
+.bubble-text {
+  @apply text-sm font-semibold text-base-content;
+}
+
+.bubble-text-strikethrough {
+  @apply text-sm font-semibold text-base-content line-through decoration-error;
+}
