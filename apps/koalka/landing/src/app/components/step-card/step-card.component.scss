@@ -1,1 +1,21 @@
 // Step card styles
+
+.step-card {
+  @apply card bg-base-200 shadow-lg h-full;
+}
+
+.step-card-body {
+  @apply card-body flex flex-col;
+}
+
+.step-badge {
+  @apply badge badge-primary badge-lg shrink-0;
+}
+
+.step-title {
+  @apply card-title text-lg mt-4 min-h-[3.5rem] flex items-start;
+}
+
+.step-description {
+  @apply text-base-content/70 flex-1;
+}
