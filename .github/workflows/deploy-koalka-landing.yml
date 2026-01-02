@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: koalka
 
     steps:
       - name: Checkout repository
@@ -60,11 +61,12 @@ jobs:
       - name: Deploy to Production (OVH) via SFTP
         if: steps.affected.outputs.is_affected == 'true'
         env:
-          KOALKA_LANDING_SFTP_HOST: ${{ secrets.KOALKA_LANDING_SFTP_HOST }}
-          KOALKA_LANDING_SFTP_PORT: ${{ secrets.KOALKA_LANDING_SFTP_PORT }}
-          KOALKA_LANDING_SFTP_USER: ${{ secrets.KOALKA_LANDING_SFTP_USER }}
-          KOALKA_LANDING_SFTP_PASSWORD: ${{ secrets.KOALKA_LANDING_SFTP_PASSWORD }}
-          KOALKA_LANDING_SFTP_REMOTE_PATH: ${{ secrets.KOALKA_LANDING_SFTP_REMOTE_PATH }}
+          # Map environment secrets (PROD_*) to script format (KOALKA_LANDING_SFTP_*)
+          KOALKA_LANDING_SFTP_HOST: ${{ secrets.PROD_HOST }}
+          KOALKA_LANDING_SFTP_PORT: ${{ secrets.PROD_PORT }}
+          KOALKA_LANDING_SFTP_USER: ${{ secrets.PROD_USER }}
+          KOALKA_LANDING_SFTP_PASSWORD: ${{ secrets.PROD_PASSWORD }}
+          KOALKA_LANDING_SFTP_REMOTE_PATH: ${{ secrets.PROD_REMOTE_PATH }}
         run: node tools/scripts/deploy-sftp.mjs KOALKA_LANDING dist/apps/koalka/landing/browser
 
       - name: Summary
@@ -77,9 +79,10 @@ jobs:
             echo "koalka-landing was not affected by this change." >> $GITHUB_STEP_SUMMARY
           fi
 
-# Required GitHub Secrets:
-# - KOALKA_LANDING_SFTP_HOST: ftp.cluster121.hosting.ovh.net
-# - KOALKA_LANDING_SFTP_PORT: 22
-# - KOALKA_LANDING_SFTP_USER: koalkar
-# - KOALKA_LANDING_SFTP_PASSWORD: SFTP password
-# - KOALKA_LANDING_SFTP_REMOTE_PATH: /home/koalkar/www
+# GitHub Environment: koalka
+# Required secrets in the "koalka" environment:
+# - PROD_HOST: ftp.cluster121.hosting.ovh.net
+# - PROD_PORT: 22
+# - PROD_USER: koalkar
+# - PROD_PASSWORD: SFTP password
+# - PROD_REMOTE_PATH: /home/koalkar/www

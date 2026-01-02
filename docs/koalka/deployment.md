@@ -94,19 +94,42 @@ For multiple apps, use the pattern: `{APP_NAME}_SFTP_{VARIABLE}`
 | `*_SFTP_PASSWORD` | SFTP password |
 | `*_SFTP_REMOTE_PATH` | Remote directory path |
 
-## GitHub Secrets
+## GitHub Environment & Secrets
 
-For GitHub Actions deployment, configure these secrets in your repository:
+The workflow uses a **GitHub Environment** called `koalka` for deployment secrets.
+
+### Setup
+
+1. Go to repo **Settings → Environments → New environment**
+2. Create environment named `koalka`
+3. Add these secrets to the environment:
 
 | Secret | Value |
 |--------|-------|
-| `KOALKA_LANDING_SFTP_HOST` | `ftp.cluster121.hosting.ovh.net` |
-| `KOALKA_LANDING_SFTP_PORT` | `22` |
-| `KOALKA_LANDING_SFTP_USER` | `koalkar` |
-| `KOALKA_LANDING_SFTP_PASSWORD` | Your SFTP password |
-| `KOALKA_LANDING_SFTP_REMOTE_PATH` | `/home/koalkar/www` |
+| `PROD_HOST` | `ftp.cluster121.hosting.ovh.net` |
+| `PROD_PORT` | `22` |
+| `PROD_USER` | `koalkar` |
+| `PROD_PASSWORD` | Your SFTP password |
+| `PROD_REMOTE_PATH` | `/home/koalkar/www` |
 
-**Note:** Both GitHub Actions and local deployment use the same script and variable naming convention.
+### Why Use Environments?
+
+- **Isolation**: Secrets scoped to specific environment
+- **Protection rules**: Optional approval gates before deployment
+- **Deployment tracking**: GitHub shows deployment history
+- **Cleaner naming**: Simple `PROD_*` names in GitHub, mapped to `KOALKA_LANDING_*` for the script
+
+### Local vs GitHub Variable Mapping
+
+| Local `.env` | GitHub Environment Secret |
+|--------------|---------------------------|
+| `KOALKA_LANDING_SFTP_HOST` | `PROD_HOST` |
+| `KOALKA_LANDING_SFTP_PORT` | `PROD_PORT` |
+| `KOALKA_LANDING_SFTP_USER` | `PROD_USER` |
+| `KOALKA_LANDING_SFTP_PASSWORD` | `PROD_PASSWORD` |
+| `KOALKA_LANDING_SFTP_REMOTE_PATH` | `PROD_REMOTE_PATH` |
+
+The workflow maps GitHub secrets to the script's expected format automatically.
 
 ## OVH Hosting Details
 
