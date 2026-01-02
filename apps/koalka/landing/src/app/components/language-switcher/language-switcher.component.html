@@ -1,20 +1,11 @@
-<div class="flex gap-2">
-  <button
-    type="button"
-    (click)="switchLanguage('pl')"
-    class="btn btn-sm btn-ghost"
-    [class.btn-active]="languageService.currentLanguage() === 'pl'"
-    aria-label="Switch to Polish">
+<button
+  type="button"
+  (click)="toggleLanguage()"
+  class="btn btn-ghost btn-sm btn-square text-base-content/70 hover:text-base-content"
+  [attr.aria-label]="languageService.currentLanguage() === 'pl' ? 'Switch to English' : 'Przełącz na polski'">
+  @if (languageService.currentLanguage() === 'pl') {
     <span class="text-lg">🇵🇱</span>
-    <span class="hidden sm:inline">PL</span>
-  </button>
-  <button
-    type="button"
-    (click)="switchLanguage('en')"
-    class="btn btn-sm btn-ghost"
-    [class.btn-active]="languageService.currentLanguage() === 'en'"
-    aria-label="Switch to English">
+  } @else {
     <span class="text-lg">🇬🇧</span>
-    <span class="hidden sm:inline">EN</span>
-  </button>
-</div>
+  }
+</button>

@@ -13,7 +13,8 @@ import { LanguageService, Language } from '../../services/language.service';
 export class LanguageSwitcherComponent {
   languageService = inject(LanguageService);
 
-  switchLanguage(lang: Language): void {
-    this.languageService.setLanguage(lang);
+  toggleLanguage(): void {
+    const newLang = this.languageService.currentLanguage() === 'pl' ? 'en' : 'pl';
+    this.languageService.setLanguage(newLang);
   }
 }
