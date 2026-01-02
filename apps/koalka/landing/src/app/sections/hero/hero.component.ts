@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID, ViewEncapsulation, computed } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-hero',
@@ -9,12 +10,25 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeroComponent {
   private platformId = inject(PLATFORM_ID);
+  private languageService = inject(LanguageService);
+  private translateService = inject(TranslateService);
 
   mouseX = signal(0);
   mouseY = signal(0);
+
+  anchors = computed(() => {
+    const lang = this.languageService.currentLanguage();
+    const prefix = lang === 'en' ? '/en' : '';
+
+    return {
+      contact: `${prefix}#${this.translateService.instant('anchors.contact')}`,
+      howItWorks: `${prefix}#${this.translateService.instant('anchors.how_it_works')}`,
+    };
+  });
 
   onBubbleAreaMouseMove(event: MouseEvent) {
     if (!isPlatformBrowser(this.platformId)) return;

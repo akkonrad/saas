@@ -8,6 +8,15 @@
     "team": "Team",
     "contact": "Contact"
   },
+  "anchors": {
+    "hero": "hero",
+    "problem": "problem",
+    "solution": "solution",
+    "how_it_works": "how-it-works",
+    "for_who": "for-who",
+    "team": "team",
+    "contact": "contact"
+  },
   "hero": {
     "badge": "Automation for SMBs",
     "title": "Your people are copying data from email to Excel. Today.",
@@ -102,12 +111,18 @@
     "member1_name": "Konrad",
     "member1_role": "Co-founder, Solution Architect",
     "member1_desc": "18+ years of experience. Building an AI startup automating clinical trials. Worked in Switzerland for clients in financial and medical sectors.",
+    "member1_automation": "Clinical process automation with AI",
+    "member1_alt": "Konrad - Solution Architect, KOALKA co-founder",
     "member2_name": "Aleksander",
     "member2_role": "Co-founder, Automation Specialist",
     "member2_desc": "12+ years of experience. Projects for medical and financial industries. Built enterprise systems and startup applications.",
+    "member2_automation": "Goals and OKR management automation",
+    "member2_alt": "Aleksander - Automation Specialist, KOALKA co-founder",
     "member3_name": "Kamil",
     "member3_role": "Co-founder, Lead Developer",
-    "member3_desc": "Specializes in building scalable applications. Experience in tech startups and enterprise projects."
+    "member3_desc": "Specializes in building scalable applications. Experience in tech startups and enterprise projects.",
+    "member3_automation": "E-commerce systems integration automation",
+    "member3_alt": "Kamil - Lead Developer, KOALKA co-founder"
   },
   "contact": {
     "title": "Contact us",

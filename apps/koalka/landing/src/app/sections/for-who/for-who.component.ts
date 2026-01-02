@@ -5,6 +5,7 @@ import { UiSectionComponent } from '@ui';
 import { MockupCardComponent } from '../../components/mockup-card/mockup-card.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, startWith } from 'rxjs';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-for-who',
@@ -16,6 +17,12 @@ import { map, startWith } from 'rxjs';
 })
 export class ForWhoComponent {
   private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
+
+  sectionId = computed(() => {
+    this.languageService.currentLanguage();
+    return this.translate.instant('anchors.for_who');
+  });
 
   private langChange = toSignal(
     this.translate.onLangChange.pipe(

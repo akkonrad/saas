@@ -8,6 +8,15 @@
     "team": "Zespół",
     "contact": "Kontakt"
   },
+  "anchors": {
+    "hero": "hero",
+    "problem": "problem",
+    "solution": "rozwiazanie",
+    "how_it_works": "jak-to-dziala",
+    "for_who": "dla-kogo",
+    "team": "zespol",
+    "contact": "kontakt"
+  },
   "hero": {
     "badge": "Automatyzacja dla MSP",
     "title": "Twoi ludzie przepisują dane z maila do Excela. Dzisiaj.",
@@ -100,14 +109,20 @@
     "title": "Zespół KOALKA",
     "description": "Łączymy doświadczenie w technologii z praktycznym podejściem do biznesu. Nie teoretyzujemy - budujemy rozwiązania, które działają.",
     "member1_name": "Konrad",
-    "member1_role": "Współzałożyciel, Solution Architect",
+    "member1_role": "Co-Founder, Solution Architect",
     "member1_desc": "18+ lat doświadczenia. Buduje startup AI automatyzujący badania kliniczne. Pracował w Szwajcarii dla klientów z sektora finansowego i medycznego.",
+    "member1_automation": "Automatyzacje w procesach klinicznych z wykorzystaniem AI",
+    "member1_alt": "Konrad - Solution Architect, Co-Founder",
     "member2_name": "Aleksander",
-    "member2_role": "Współzałożyciel, Automation Specialist",
+    "member2_role": "Co-Founder, Automation Specialist",
     "member2_desc": "12+ lat doświadczenia. Projekty dla branży medycznej i finansowej. Budował systemy enterprise i aplikacje dla startupów.",
+    "member2_automation": "Automatyzacja zarządzania celami i OKR",
+    "member2_alt": "Aleksander - Automation Specialist, Co-Founder",
     "member3_name": "Kamil",
-    "member3_role": "Współzałożyciel, Lead Developer",
-    "member3_desc": "Specjalizacja w budowie skalowalnych aplikacji. Doświadczenie w startupach technologicznych oraz projektach enterprise."
+    "member3_role": "Co-Founder, Lead Developer",
+    "member3_desc": "Specjalizacja w budowie skalowalnych aplikacji. Doświadczenie w startupach technologicznych oraz projektach enterprise.",
+    "member3_automation": "Automatyzacje integracji systemów e-commerce",
+    "member3_alt": "Kamil - Lead Developer, Co-Founder"
   },
   "contact": {
     "title": "Skontaktuj się z nami",

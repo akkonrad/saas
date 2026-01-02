@@ -17,21 +17,30 @@
 
     <!-- Desktop Navigation -->
     <nav class="nav-desktop" aria-label="Main navigation">
-      <a href="#hero" class="nav-link">Start</a>
-      <a href="#problem" class="nav-link">{{ 'nav.problem' | translate }}</a>
-      <a href="#rozwiazanie" class="nav-link">{{ 'nav.solution' | translate }}</a>
-      <a href="#jak-to-dziala" class="nav-link">{{ 'nav.how_it_works' | translate }}</a>
-      <a href="#dla-kogo" class="nav-link">{{ 'nav.for_who' | translate }}</a>
-      <a href="#zespol" class="nav-link">{{ 'nav.team' | translate }}</a>
-      <a href="#kontakt" class="nav-link">{{ 'nav.contact' | translate }}</a>
+      <a [href]="anchors().hero" class="nav-link">Start</a>
+      <a [href]="anchors().problem" class="nav-link">{{ 'nav.problem' | translate }}</a>
+      <a [href]="anchors().solution" class="nav-link">{{ 'nav.solution' | translate }}</a>
+      <a [href]="anchors().howItWorks" class="nav-link">{{ 'nav.how_it_works' | translate }}</a>
+      <a [href]="anchors().forWho" class="nav-link">{{ 'nav.for_who' | translate }}</a>
+      <a [href]="anchors().team" class="nav-link">{{ 'nav.team' | translate }}</a>
+      <a [href]="anchors().contact" class="nav-link">{{ 'nav.contact' | translate }}</a>
     </nav>
 
     <!-- Actions: Language, Theme, CTA -->
     <div class="header-actions">
-      <app-language-switcher />
-      <app-theme-toggle />
+      <ui-language-switcher
+        [languages]="languages"
+        [currentLanguage]="currentLanguage()"
+        variant="dropdown"
+        (languageChange)="onLanguageChange($event)"
+      />
+      <ui-theme-toggle
+        [theme]="currentTheme()"
+        variant="icon-button"
+        (themeChange)="onThemeChange($event)"
+      />
 
-      <a href="#kontakt" class="cta-button-sm">
+      <a [href]="anchors().contact" class="cta-button-sm">
         {{ 'hero.cta_primary' | translate }}
       </a>
 
@@ -59,15 +68,15 @@
   @if (mobileMenuOpen()) {
     <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
       <ul class="mobile-menu-list" role="list">
-        <li><a href="#hero" (click)="closeMobileMenu()">Start</a></li>
-        <li><a href="#problem" (click)="closeMobileMenu()">{{ 'nav.problem' | translate }}</a></li>
-        <li><a href="#rozwiazanie" (click)="closeMobileMenu()">{{ 'nav.solution' | translate }}</a></li>
-        <li><a href="#jak-to-dziala" (click)="closeMobileMenu()">{{ 'nav.how_it_works' | translate }}</a></li>
-        <li><a href="#dla-kogo" (click)="closeMobileMenu()">{{ 'nav.for_who' | translate }}</a></li>
-        <li><a href="#zespol" (click)="closeMobileMenu()">{{ 'nav.team' | translate }}</a></li>
-        <li><a href="#kontakt" (click)="closeMobileMenu()">{{ 'nav.contact' | translate }}</a></li>
+        <li><a [href]="anchors().hero" (click)="closeMobileMenu()">Start</a></li>
+        <li><a [href]="anchors().problem" (click)="closeMobileMenu()">{{ 'nav.problem' | translate }}</a></li>
+        <li><a [href]="anchors().solution" (click)="closeMobileMenu()">{{ 'nav.solution' | translate }}</a></li>
+        <li><a [href]="anchors().howItWorks" (click)="closeMobileMenu()">{{ 'nav.how_it_works' | translate }}</a></li>
+        <li><a [href]="anchors().forWho" (click)="closeMobileMenu()">{{ 'nav.for_who' | translate }}</a></li>
+        <li><a [href]="anchors().team" (click)="closeMobileMenu()">{{ 'nav.team' | translate }}</a></li>
+        <li><a [href]="anchors().contact" (click)="closeMobileMenu()">{{ 'nav.contact' | translate }}</a></li>
         <li class="mt-2">
-          <a href="#kontakt" (click)="closeMobileMenu()" class="mobile-cta-button">
+          <a [href]="anchors().contact" (click)="closeMobileMenu()" class="mobile-cta-button">
             {{ 'hero.cta_primary' | translate }}
           </a>
         </li>

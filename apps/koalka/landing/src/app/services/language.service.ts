@@ -1,7 +1,6 @@
 import { Injectable, inject, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 
 export type Language = 'pl' | 'en';
 
@@ -10,7 +9,6 @@ export type Language = 'pl' | 'en';
 })
 export class LanguageService {
   private translateService = inject(TranslateService);
-  private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
 
   currentLanguage = signal<Language>('pl');
@@ -69,24 +67,25 @@ export class LanguageService {
       localStorage.setItem(this.STORAGE_KEY, lang);
 
       if (navigate) {
-        // Navigate to the appropriate language route
-        const currentUrl = this.router.url;
-        let newUrl: string;
+        // Use window.location for SSR landing page to ensure proper URL change
+        const currentPath = window.location.pathname;
+        const hash = window.location.hash;
+        let newPath: string;
 
         if (lang === 'pl') {
           // Remove /en prefix if present
-          newUrl = currentUrl.replace(/^\/en(\/|$)/, '/');
+          newPath = currentPath.replace(/^\/en(\/|$)/, '/');
         } else {
           // Add /en prefix if not present
-          if (currentUrl.startsWith('/en')) {
-            newUrl = currentUrl;
+          if (!currentPath.startsWith('/en')) {
+            newPath = '/en' + (currentPath === '/' ? '' : currentPath);
           } else {
-            newUrl = '/en' + (currentUrl === '/' ? '' : currentUrl);
+            newPath = currentPath;
           }
         }
 
-        if (newUrl !== currentUrl) {
-          this.router.navigateByUrl(newUrl);
+        if (newPath !== currentPath) {
+          window.location.href = newPath + hash;
         }
       }
     }

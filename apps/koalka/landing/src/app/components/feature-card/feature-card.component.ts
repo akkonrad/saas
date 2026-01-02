@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type IconType = 'clipboard' | 'envelope' | 'box' | 'database' | 'check' | 'cog' | 'handshake' | 'target' | 'link' | 'plug' | 'muscle';
@@ -10,6 +10,7 @@ export type IconType = 'clipboard' | 'envelope' | 'box' | 'database' | 'check' |
   templateUrl: './feature-card.component.html',
   styleUrl: './feature-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class FeatureCardComponent {
   icon = input<string>();

@@ -1,4 +1,4 @@
-<ui-section id="zespol" variant="muted">
+<ui-section [attr.id]="sectionId()" variant="muted">
   <div class="container mx-auto px-4">
     <div class="team-header">
       <p class="team-subtitle">{{ 'team.subtitle' | translate }}</p>
@@ -14,13 +14,11 @@
       <article class="team-member">
         <div class="team-member-photo">
           <img
-            src="/professional-man-portrait-modern.jpg"
-            alt="Konrad - Solution Architect, współzałożyciel KOALKA"
+            ngSrc="/konrad.jpg"
+            [alt]="member1Alt()"
             class="team-member-img"
-            loading="lazy"
             width="112"
             height="112"
-            decoding="async"
           />
         </div>
         <h3 class="team-member-name">
@@ -28,6 +26,7 @@
         </h3>
         <p class="team-member-role">{{ 'team.member1_role' | translate }}</p>
         <p class="team-member-desc">{{ 'team.member1_desc' | translate }}</p>
+        <p class="team-member-automation">{{ 'team.member1_automation' | translate }}</p>
         <a
           href="https://www.linkedin.com/in/akkonrad/"
           target="_blank"
@@ -46,13 +45,11 @@
       <article class="team-member">
         <div class="team-member-photo">
           <img
-            src="/professional-man-portrait-business.png"
-            alt="Aleksander - Automation Specialist, współzałożyciel KOALKA"
+            ngSrc="/alek.jpg"
+            [alt]="member2Alt()"
             class="team-member-img"
-            loading="lazy"
             width="112"
             height="112"
-            decoding="async"
           />
         </div>
         <h3 class="team-member-name">
@@ -60,6 +57,7 @@
         </h3>
         <p class="team-member-role">{{ 'team.member2_role' | translate }}</p>
         <p class="team-member-desc">{{ 'team.member2_desc' | translate }}</p>
+        <p class="team-member-automation">{{ 'team.member2_automation' | translate }}</p>
         <a
           href="https://www.linkedin.com/in/aleksander-kowal-1b093a130/"
           target="_blank"
@@ -78,13 +76,11 @@
       <article class="team-member">
         <div class="team-member-photo">
           <img
-            src="/minimalist-professional-man.png"
-            alt="Kamil - Lead Developer, współzałożyciel KOALKA"
+            ngSrc="/naja.jpg"
+            [alt]="member3Alt()"
             class="team-member-img"
-            loading="lazy"
             width="112"
             height="112"
-            decoding="async"
           />
         </div>
         <h3 class="team-member-name">
@@ -92,6 +88,7 @@
         </h3>
         <p class="team-member-role">{{ 'team.member3_role' | translate }}</p>
         <p class="team-member-desc">{{ 'team.member3_desc' | translate }}</p>
+        <p class="team-member-automation">{{ 'team.member3_automation' | translate }}</p>
         <a
           href="https://www.linkedin.com/in/kamil-naja"
           target="_blank"

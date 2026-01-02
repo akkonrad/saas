@@ -21,7 +21,7 @@
           }
         ],
         "styles": [
-          "apps/koalka/landing/src/styles.css"
+          "apps/koalka/landing/src/styles.scss"
         ],
         "server": "apps/koalka/landing/src/main.server.ts",
         "ssr": {
@@ -40,8 +40,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
+              "maximumWarning": "32kb",
+              "maximumError": "64kb"
             }
           ],
           "outputHashing": "all"

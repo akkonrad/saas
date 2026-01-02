@@ -1,3 +1,5 @@
+@reference "../../../styles.scss";
+
 // Hero section styles
 
 .hero-section {
@@ -12,12 +14,17 @@
   @apply container mx-auto px-4 md:px-6 relative;
 }
 
-.hero-grid {
-  @apply grid lg:grid-cols-2 gap-12 lg:gap-16 items-center;
+.hero-top-row {
+  @apply flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 items-start;
 }
 
 .hero-content {
-  @apply space-y-8;
+  // On lg: take ~70%, on xl: take 50%
+  @apply space-y-6 block lg:flex-[2] xl:flex-1 lg:max-w-none xl:max-w-[50%];
+}
+
+.hero-tagline {
+  @apply text-sm text-base-content/70 mt-16 max-w-md;
 }
 
 .hero-badge {
@@ -74,23 +81,25 @@
 
 // Bubble area styles
 .bubble-area {
-  @apply relative hidden lg:block;
+  // On lg: take ~30%, on xl: take 50%
+  @apply relative hidden lg:block lg:flex-1 xl:flex-1 xl:max-w-[50%];
 }
 
 .bubble-container {
-  @apply aspect-square max-w-lg mx-auto relative;
+  // Stack bubbles on lg screens, use absolute positioning on xl+
+  @apply flex flex-col gap-3 xl:block xl:aspect-square max-w-lg mx-auto xl:relative;
 }
 
 .bubble-glow {
-  @apply absolute inset-0 bg-primary/10 rounded-full blur-3xl;
+  @apply hidden xl:block absolute inset-0 bg-primary/10 rounded-full blur-3xl;
 }
 
 .bubble-svg {
-  @apply absolute inset-0 w-full h-full opacity-20;
+  @apply hidden xl:block absolute inset-0 w-full h-full opacity-20;
 }
 
 .central-hub {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30 flex items-center justify-center transition-transform duration-200 ease-out;
+  @apply hidden xl:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30 items-center justify-center transition-transform duration-200 ease-out;
 }
 
 .central-hub-icon {
@@ -99,27 +108,28 @@
 
 // Bubble card styles
 .bubble-card {
-  @apply absolute bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out;
+  // Static on lg, absolute on xl+
+  @apply static xl:absolute bg-base-100/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-base-300/50 transition-transform duration-200 ease-out;
 }
 
 .bubble-card-time {
-  @apply top-[10%] left-[5%];
+  @apply xl:top-[10%] xl:left-[5%];
 }
 
 .bubble-card-emails {
-  @apply top-[5%] right-[10%];
+  @apply xl:top-[5%] xl:right-[10%];
 }
 
 .bubble-card-copypaste {
-  @apply top-[55%] right-[0%];
+  @apply xl:top-[55%] xl:right-[0%];
 }
 
 .bubble-card-crm {
-  @apply bottom-[15%] right-[15%];
+  @apply xl:bottom-[15%] xl:right-[15%];
 }
 
 .bubble-card-systems {
-  @apply bottom-[20%] left-[0%];
+  @apply xl:bottom-[20%] xl:left-[0%];
 }
 
 .bubble-content {
