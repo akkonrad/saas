@@ -48,3 +48,5 @@ vitest.config.*.timestamp*
 storybook-static
 
 external/*
+
+.env
