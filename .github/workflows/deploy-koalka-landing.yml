@@ -4,16 +4,15 @@ on:
   push:
     branches:
       - main
-      - develop
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # Nx needs the full git history to determine affected projects.
         with:
           fetch-depth: 0
 
@@ -26,46 +25,61 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build koalka-landing app
-        # This builds the Angular SSR app in static mode.
-        # The output is in dist/apps/koalka/landing/browser/
-        run: npx nx build koalka-landing --prod
+      # Nx uses SHAs to determine what has changed
+      # This action sets NX_BASE and NX_HEAD environment variables
+      - name: Derive appropriate SHAs for base and head for nx affected
+        uses: nrwl/nx-set-shas@v4
 
-#      - name: Deploy to Staging (mikr.us)
-#        if: github.ref == 'refs/heads/develop'
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.STAGING_HOST }}
-#          username: ${{ secrets.STAGING_USER }}
-#          key: ${{ secrets.STAGING_SSH_KEY }}
-#          port: ${{ secrets.STAGING_PORT || 22 }}
-#          script: |
-#            # This script deploys the static files to the staging server.
-#            # Assumes a web server (e.g., Nginx) is configured to serve from the remote path.
-#            # Required secrets:
-#            # - STAGING_HOST: e.g., 'mikr.us'
-#            # - STAGING_USER: SSH user
-#            # - STAGING_SSH_KEY: SSH private key
-#            # - STAGING_PORT: SSH port (defaults to 22)
-#            # - STAGING_REMOTE_PATH: e.g., '/var/www/koalka-landing-develop'
-#            rsync -avz --delete dist/apps/koalka/landing/browser/ ${{ secrets.STAGING_REMOTE_PATH }}
-#            echo "Deployment to staging successful"
+      - name: Check if koalka-landing is affected
+        id: affected
+        run: |
+          # Manual trigger always deploys
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "is_affected=true" >> $GITHUB_OUTPUT
+            echo "🔧 Manual trigger - will build and deploy"
+            exit 0
+          fi
+
+          # Check if koalka-landing is in the list of affected projects
+          AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD)
+          echo "Affected projects:"
+          echo "$AFFECTED"
+
+          if echo "$AFFECTED" | grep -q "koalka-landing"; then
+            echo "is_affected=true" >> $GITHUB_OUTPUT
+            echo "✅ koalka-landing IS affected - will build and deploy"
+          else
+            echo "is_affected=false" >> $GITHUB_OUTPUT
+            echo "⏭️ koalka-landing is NOT affected - skipping deployment"
+          fi
+
+      - name: Build koalka-landing
+        if: steps.affected.outputs.is_affected == 'true'
+        run: npx nx build koalka-landing --configuration=production
 
       - name: Deploy to Production (OVH) via SFTP
-        if: github.ref == 'refs/heads/main'
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.PROD_HOST }}
-          username: ${{ secrets.PROD_USER }}
-          ssh_private_key: ${{ secrets.PROD_SSH_KEY }}
-          port: ${{ secrets.PROD_PORT || 22 }}
-          local_path: './dist/apps/koalka/landing/browser/*'
-          remote_path: ${{ secrets.PROD_REMOTE_PATH }}
-          sftpArgs: '-o ConnectTimeout=5'
-          delete_remote_files: true
-          # Required secrets:
-          # - PROD_HOST: e.g., your ovh server ip/domain
-          # - PROD_USER: SFTP user
-          # - PROD_SSH_KEY: SSH private key
-          # - PROD_PORT: SFTP port (defaults to 22)
-          # - PROD_REMOTE_PATH: e.g., '/var/www/koalka-landing-main'
+        if: steps.affected.outputs.is_affected == 'true'
+        env:
+          KOALKA_LANDING_SFTP_HOST: ${{ secrets.KOALKA_LANDING_SFTP_HOST }}
+          KOALKA_LANDING_SFTP_PORT: ${{ secrets.KOALKA_LANDING_SFTP_PORT }}
+          KOALKA_LANDING_SFTP_USER: ${{ secrets.KOALKA_LANDING_SFTP_USER }}
+          KOALKA_LANDING_SFTP_PASSWORD: ${{ secrets.KOALKA_LANDING_SFTP_PASSWORD }}
+          KOALKA_LANDING_SFTP_REMOTE_PATH: ${{ secrets.KOALKA_LANDING_SFTP_REMOTE_PATH }}
+        run: node tools/scripts/deploy-sftp.mjs KOALKA_LANDING dist/apps/koalka/landing/browser
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.affected.outputs.is_affected }}" == "true" ]; then
+            echo "### ✅ Deployment Complete" >> $GITHUB_STEP_SUMMARY
+            echo "koalka-landing was deployed to production." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⏭️ Deployment Skipped" >> $GITHUB_STEP_SUMMARY
+            echo "koalka-landing was not affected by this change." >> $GITHUB_STEP_SUMMARY
+          fi
+
+# Required GitHub Secrets:
+# - KOALKA_LANDING_SFTP_HOST: ftp.cluster121.hosting.ovh.net
+# - KOALKA_LANDING_SFTP_PORT: 22
+# - KOALKA_LANDING_SFTP_USER: koalkar
+# - KOALKA_LANDING_SFTP_PASSWORD: SFTP password
+# - KOALKA_LANDING_SFTP_REMOTE_PATH: /home/koalkar/www

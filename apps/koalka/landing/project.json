@@ -89,6 +89,13 @@
         "staticFilePath": "dist/apps/koalka/landing/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node tools/scripts/deploy-sftp.mjs KOALKA_LANDING dist/apps/koalka/landing/browser"
+      }
     }
   }
 }
