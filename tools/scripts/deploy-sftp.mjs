@@ -100,12 +100,21 @@ async function deploy() {
     await sftp.connect(config_sftp);
     console.log('Connected successfully!\n');
 
+    // Ensure remote base directory exists
+    try {
+      await sftp.mkdir(remotePath, true);
+      console.log(`Ensured remote directory exists: ${remotePath}`);
+    } catch (e) {
+      // Directory might already exist, that's fine
+    }
+
     // Get all local files
     const localFiles = getAllFiles(localPath);
     console.log(`Found ${localFiles.length} files to upload\n`);
 
     // Create remote directories and upload files
     const uploadedDirs = new Set();
+    uploadedDirs.add(remotePath); // Base path already ensured above
 
     for (const localFile of localFiles) {
       const relativePath = relative(localPath, localFile);
