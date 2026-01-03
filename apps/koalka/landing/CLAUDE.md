@@ -166,7 +166,32 @@ For local development, assets are served from `public/`.
 ## Build Output
 
 Production build outputs to `dist/apps/koalka/landing/`:
-- `browser/` - Client-side assets
+- `browser/` - Client-side assets (deployed to production)
 - `server/` - SSR server bundle
 
 The build uses **prerendering** (`prerender: true`) and **static output mode** for optimal performance.
+
+## Deployment
+
+The application is automatically deployed to OVH hosting via SFTP when changes are pushed to `main` branch.
+
+### Manual Deployment
+
+```bash
+# Build and deploy
+npx nx deploy koalka-landing
+```
+
+### CI/CD Workflow
+
+GitHub Actions workflow (`.github/workflows/deploy-koalka-landing.yml`) handles:
+1. Building koalka-landing with production configuration
+2. Uploading `dist/apps/koalka/landing/browser/` to OVH SFTP server
+3. Only deploys if koalka-landing is affected by the commit
+
+The deployment uses environment secrets configured in GitHub (koalka environment):
+- `PROD_HOST` - SFTP server hostname
+- `PROD_PORT` - SFTP port (22)
+- `PROD_USER` - SFTP username
+- `PROD_PASSWORD` - SFTP password
+- `PROD_REMOTE_PATH` - Remote directory path
