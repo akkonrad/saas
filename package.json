@@ -108,6 +108,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
     "ssh2-sftp-client": "^12.0.1",
+    "stripe": "^20.1.0",
     "tailwindcss": "^4.1.18",
     "zod": "^4.2.1"
   }

@@ -1,0 +1,21 @@
+{
+  "name": "billing-stripe",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/billing/stripe/src",
+  "projectType": "library",
+  "tags": [
+    "type:data-access",
+    "platform:node",
+    "scope:shared",
+    "domain:billing"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/billing/stripe/jest.config.cts"
+      }
+    }
+  }
+}

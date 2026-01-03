@@ -6,6 +6,7 @@ import { SupabaseConfig, SupabaseModule } from '@saas/api/supabase-core';
 import { SupabaseAuthModule } from '@saas/api/supabase-auth';
 import { SupabaseDatabaseModule } from '@saas/api/supabase-database';
 import { SupabaseStorageModule } from '@saas/api/supabase-storage';
+import { StripeModule } from '@saas/api/billing-stripe';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
@@ -22,6 +23,34 @@ import { AuthModule } from '../auth/auth.module';
         publishableKey:
           configService.get<string>('SUPABASE_PUBLISHABLE_KEY') || '',
         secretKey: configService.get<string>('SUPABASE_SECRET_KEY') || '',
+      }),
+      inject: [ConfigService],
+    }),
+    // Configure Stripe billing module
+    StripeModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        apiKey: configService.get<string>('STRIPE_SECRET_KEY') || '',
+        webhookSecret: configService.get<string>('STRIPE_WEBHOOK_SECRET') || '',
+        plans: [
+          {
+            productId: 'faceless_starter',
+            name: 'Starter',
+            description: 'Perfect for individuals getting started',
+            prices: [
+              { amount: 999, currency: 'usd', interval: 'month' as const },
+              { amount: 9990, currency: 'usd', interval: 'year' as const },
+            ],
+          },
+          {
+            productId: 'faceless_pro',
+            name: 'Pro',
+            description: 'For professionals and growing teams',
+            prices: [
+              { amount: 2999, currency: 'usd', interval: 'month' as const },
+              { amount: 29990, currency: 'usd', interval: 'year' as const },
+            ],
+          },
+        ],
       }),
       inject: [ConfigService],
     }),
