@@ -53,7 +53,7 @@ const config_sftp = {
   password: getEnv('PASSWORD'),
 };
 
-const remotePath = getEnv('REMOTE_PATH');
+const remotePath = getEnv('REMOTE_PATH').replace(/\/+$/, ''); // Remove trailing slashes
 
 // Verify local path exists
 if (!existsSync(localPath)) {
@@ -118,8 +118,13 @@ async function deploy() {
 
     for (const localFile of localFiles) {
       const relativePath = relative(localPath, localFile);
-      const remoteFile = join(remotePath, relativePath).replace(/\\/g, '/');
-      const remoteDir = join(remotePath, relative(localPath, join(localFile, '..'))).replace(/\\/g, '/');
+
+      // Construct remote paths using forward slashes (POSIX) and normalize
+      const remoteFile = `${remotePath}/${relativePath}`.replace(/\\/g, '/').replace(/\/+/g, '/');
+      const relativeDir = relative(localPath, join(localFile, '..'));
+      const remoteDir = relativeDir === '.' || relativeDir === ''
+        ? remotePath
+        : `${remotePath}/${relativeDir}`.replace(/\\/g, '/').replace(/\/+/g, '/');
 
       // Create remote directory if needed
       if (!uploadedDirs.has(remoteDir)) {
@@ -127,14 +132,29 @@ async function deploy() {
           await sftp.mkdir(remoteDir, true);
           uploadedDirs.add(remoteDir);
         } catch (e) {
-          // Directory might already exist
+          // Only ignore "already exists" errors
+          if (!e.message.includes('already exists') &&
+              !e.message.includes('EEXIST') &&
+              !e.message.includes('File exists')) {
+            console.error(`\nWarning: Failed to create directory ${remoteDir}: ${e.message}`);
+          }
+          uploadedDirs.add(remoteDir); // Mark as processed to avoid retry
         }
       }
 
       // Upload file
       process.stdout.write(`Uploading: ${relativePath}... `);
-      await sftp.put(localFile, remoteFile);
-      console.log('OK');
+      try {
+        await sftp.put(localFile, remoteFile);
+        console.log('OK');
+      } catch (err) {
+        console.error(`FAILED`);
+        console.error(`  Error uploading ${relativePath}:`);
+        console.error(`  Local:  ${localFile}`);
+        console.error(`  Remote: ${remoteFile}`);
+        console.error(`  Message: ${err.message}`);
+        throw err;
+      }
     }
 
     console.log('\n========================================');
