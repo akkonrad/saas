@@ -13,6 +13,7 @@
     "nx": "nx",
     "supabase": "supabase"
   },
+  "packageManager": "yarn@1.22.22",
   "private": true,
   "devDependencies": {
     "@analogjs/astro-angular": "^2.2.0",
