@@ -138,6 +138,11 @@
     "form_submit": "Send and let's schedule a call",
     "form_error_required": "This field is required",
     "form_error_email": "Please enter a valid email address",
+    "form_error_captcha": "reCAPTCHA verification failed. Please try again.",
+    "form_error_submission_error": "Failed to send your message. Please try again.",
+    "form_error_network_error": "Network error. Please check your connection and try again.",
+    "form_error_reCAPTCHA verification failed": "reCAPTCHA verification failed. Please try again.",
+    "form_error_Spam detection triggered": "Your submission was flagged as spam. Please try again.",
     "form_success": "Thank you! We'll be in touch soon."
   },
   "footer": {

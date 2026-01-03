@@ -1,0 +1,2 @@
+[functions.koalka-contact-form]
+verify_jwt = false

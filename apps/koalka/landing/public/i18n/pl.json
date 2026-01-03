@@ -138,6 +138,11 @@
     "form_submit": "Wyślij i umówmy się na rozmowę",
     "form_error_required": "To pole jest wymagane",
     "form_error_email": "Podaj poprawny adres email",
+    "form_error_captcha": "Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.",
+    "form_error_submission_error": "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+    "form_error_network_error": "Błąd sieci. Sprawdź połączenie i spróbuj ponownie.",
+    "form_error_reCAPTCHA verification failed": "Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.",
+    "form_error_Spam detection triggered": "Twoja wiadomość została oznaczona jako spam. Spróbuj ponownie.",
     "form_success": "Dziękujemy! Skontaktujemy się wkrótce."
   },
   "footer": {

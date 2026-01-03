@@ -2,7 +2,7 @@
   [class]="buttonClasses"
   [disabled]="disabled() || loading()"
   (click)="handleClick($event)"
-  type="button"
+  [type]="type()"
 >
   @if (loading()) {
     <span [class]="loadingClasses"></span>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'neutral' | 'ghost' | 'link';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
+export type ButtonType = 'button' | 'submit' | 'reset';
 
 @Component({
   selector: 'ui-button',
@@ -13,6 +14,11 @@ export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiButtonComponent {
+  /**
+   * Button type attribute
+   */
+  type = input<ButtonType>('button');
+
   /**
    * Button variant using DaisyUI theme colors
    * These automatically adapt to the active theme

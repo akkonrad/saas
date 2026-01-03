@@ -1,8 +1,11 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { UiInputComponent, UiTextareaComponent, UiLabelComponent, UiButtonComponent } from '@ui';
+import { firstValueFrom } from 'rxjs';
+import { RecaptchaService } from '../../services/recaptcha.service';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -22,10 +25,13 @@ import { UiInputComponent, UiTextareaComponent, UiLabelComponent, UiButtonCompon
 })
 export class ContactFormComponent {
   private fb = new FormBuilder();
+  private recaptchaService = inject(RecaptchaService);
+  private contactService = inject(ContactService);
 
   contactForm: FormGroup;
   isSubmitting = signal(false);
   submitSuccess = signal(false);
+  submitError = signal<string | null>(null);
 
   constructor() {
     this.contactForm = this.fb.group({
@@ -57,26 +63,42 @@ export class ContactFormComponent {
     return !!(control && control.invalid && control.touched);
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
       return;
     }
 
     this.isSubmitting.set(true);
+    this.submitError.set(null);
 
-    // Simulate API call
-    console.log('Form submitted:', this.contactForm.value);
+    try {
+      const recaptchaToken = await this.recaptchaService.execute('contact_form');
 
-    setTimeout(() => {
+      const formData = {
+        ...this.contactForm.value,
+        recaptchaToken,
+      };
+
+      const response = await firstValueFrom(
+        this.contactService.submitContactForm(formData)
+      );
+
+      if (response.success) {
+        this.submitSuccess.set(true);
+        this.contactForm.reset();
+
+        setTimeout(() => {
+          this.submitSuccess.set(false);
+        }, 5000);
+      } else {
+        this.submitError.set(response.error || 'submission_error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      this.submitError.set('network_error');
+    } finally {
       this.isSubmitting.set(false);
-      this.submitSuccess.set(true);
-      this.contactForm.reset();
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        this.submitSuccess.set(false);
-      }, 5000);
-    }, 1000);
+    }
   }
 }

@@ -16,7 +16,7 @@ export * from './lib/language-switcher/language-group.component';
 export * from './lib/language-switcher/language-dropdown.component';
 
 // Export types
-export type { ButtonVariant, ButtonSize } from './lib/button/button.component';
+export type { ButtonVariant, ButtonSize, ButtonType } from './lib/button/button.component';
 export type { SectionVariant } from './lib/section/section.component';
 export type {
   Theme,
