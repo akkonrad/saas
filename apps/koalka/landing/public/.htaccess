@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect www to non-www and HTTP to HTTPS
+# All traffic goes to https://koalka.pl
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://koalka.pl/$1 [L,R=301]
+
+# Handle Angular SPA routing (serve index.html for all routes)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L]
