@@ -1,7 +1,8 @@
-import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { Injectable, inject, PLATFORM_ID, DestroyRef } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,14 @@ export class MetaService {
   updateMetaTags(language: 'pl' | 'en'): void {
     // Get translations for SEO
     const seoTitle = this.translate.instant('seo.title');
+
+    // Check if translations are loaded (instant returns the key if not loaded)
+    // If translations aren't loaded yet, skip updating meta tags
+    // The static meta tags in index.html will be used instead
+    if (seoTitle === 'seo.title') {
+      return;
+    }
+
     const seoDescription = this.translate.instant('seo.description');
     const seoKeywords = this.translate.instant('seo.keywords');
     const seoLanguage = this.translate.instant('seo.language');
