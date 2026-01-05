@@ -157,14 +157,13 @@ export class UiCookieConsentComponent implements OnInit {
     // Initialize dataLayer
     (window as any).dataLayer = (window as any).dataLayer || [];
 
-    // Define gtag function
-    function gtag(...args: any[]) {
-      (window as any).dataLayer.push(args);
-    }
-    (window as any).gtag = gtag;
+    // Define gtag function (must use arguments, not rest params)
+    (window as any).gtag = function () {
+      (window as any).dataLayer.push(arguments);
+    };
 
     // Set default consent state (denied by default for GDPR compliance)
-    gtag('consent', 'default', {
+    (window as any).gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
@@ -190,9 +189,11 @@ export class UiCookieConsentComponent implements OnInit {
    */
   private loadGoogleAnalytics(): void {
     const trackingId = this.gaTrackingId();
+    console.log('[GA] Loading Google Analytics:', trackingId);
 
     // Check if already loaded
     if (document.querySelector(`script[src*="${trackingId}"]`)) {
+      console.log('[GA] Script already loaded');
       return;
     }
 
@@ -204,13 +205,19 @@ export class UiCookieConsentComponent implements OnInit {
 
     // Initialize GA
     script.onload = () => {
+      console.log('[GA] Script loaded, initializing...');
       const gtag = (window as any).gtag;
       if (gtag) {
         gtag('js', new Date());
         gtag('config', trackingId, {
-          anonymize_ip: true, // Additional privacy measure
+          anonymize_ip: true,
         });
+        console.log('[GA] Initialized successfully');
       }
+    };
+
+    script.onerror = () => {
+      console.error('[GA] Failed to load script');
     };
   }
 
