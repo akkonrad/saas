@@ -1,10 +1,10 @@
 <router-outlet></router-outlet>
 
 <ui-cookie-consent
-  [gaTrackingId]="gaTrackingId"
   [message]="'cookie_consent.message' | translate"
   [acceptButtonText]="'cookie_consent.accept' | translate"
   [rejectButtonText]="'cookie_consent.reject' | translate"
   [privacyPolicyUrl]="privacyPolicyUrl()"
   [privacyPolicyText]="'cookie_consent.privacy_link' | translate"
+  (accepted)="onCookieAccepted()"
 />

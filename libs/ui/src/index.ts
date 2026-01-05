@@ -29,7 +29,6 @@ export type {
 } from './lib/language-switcher/types';
 export type { LanguageToggleVariant } from './lib/language-switcher/language-toggle.component';
 export type {
-  CookieConsentConfig,
   ConsentStatus,
   ConsentResult,
 } from './lib/cookie-consent/cookie-consent.component';

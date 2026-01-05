@@ -2,13 +2,9 @@ import { Component, inject, effect, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from './services/language.service';
 import { MetaService } from './services/meta.service';
+import { AnalyticsService } from './services/analytics.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { UiCookieConsentComponent } from '@ui';
-
-/**
- * Google Analytics Measurement ID for Koalka Landing
- */
-const GA_TRACKING_ID = 'G-V4P12YZRYL';
 
 @Component({
   imports: [RouterModule, TranslateModule, UiCookieConsentComponent],
@@ -18,10 +14,10 @@ const GA_TRACKING_ID = 'G-V4P12YZRYL';
 })
 export class App {
   protected title = 'koalka-landing';
-  protected readonly gaTrackingId = GA_TRACKING_ID;
 
   private languageService = inject(LanguageService);
   private metaService = inject(MetaService);
+  private analyticsService = inject(AnalyticsService);
   private translate = inject(TranslateService);
 
   protected readonly privacyPolicyUrl = computed(() =>
@@ -40,5 +36,12 @@ export class App {
         this.metaService.updateMetaTags(currentLang);
       });
     });
+  }
+
+  /**
+   * Called when user accepts cookies - initialize GA
+   */
+  onCookieAccepted(): void {
+    this.analyticsService.initializeGA();
   }
 }

@@ -7,7 +7,6 @@ describe('UiCookieConsentComponent', () => {
   let fixture: ComponentFixture<UiCookieConsentComponent>;
 
   beforeEach(async () => {
-    // Clear localStorage before each test
     localStorage.clear();
 
     await TestBed.configureTestingModule({
@@ -17,7 +16,6 @@ describe('UiCookieConsentComponent', () => {
 
     fixture = TestBed.createComponent(UiCookieConsentComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('gaTrackingId', 'G-TEST123');
   });
 
   afterEach(() => {
@@ -44,13 +42,12 @@ describe('UiCookieConsentComponent', () => {
     expect(banner).toBeFalsy();
   });
 
-  it('should emit consentChanged with accepted status on accept', () => {
+  it('should emit accepted output on accept', () => {
     fixture.detectChanges();
-    const spy = jest.spyOn(component.consentChanged, 'emit');
+    const spy = jest.spyOn(component.accepted, 'emit');
 
-    // Find the actual button inside ui-button
     const buttons = fixture.nativeElement.querySelectorAll('ui-button button');
-    const acceptButton = buttons[1]; // Second button is accept (primary)
+    const acceptButton = buttons[1];
     acceptButton.click();
     fixture.detectChanges();
 
@@ -59,13 +56,12 @@ describe('UiCookieConsentComponent', () => {
     );
   });
 
-  it('should emit consentChanged with rejected status on reject', () => {
+  it('should emit rejected output on reject', () => {
     fixture.detectChanges();
-    const spy = jest.spyOn(component.consentChanged, 'emit');
+    const spy = jest.spyOn(component.rejected, 'emit');
 
-    // Find the actual button inside ui-button
     const buttons = fixture.nativeElement.querySelectorAll('ui-button button');
-    const rejectButton = buttons[0]; // First button is reject (ghost)
+    const rejectButton = buttons[0];
     rejectButton.click();
     fixture.detectChanges();
 
@@ -74,12 +70,24 @@ describe('UiCookieConsentComponent', () => {
     );
   });
 
+  it('should emit consentChanged on both accept and reject', () => {
+    fixture.detectChanges();
+    const spy = jest.spyOn(component.consentChanged, 'emit');
+
+    const buttons = fixture.nativeElement.querySelectorAll('ui-button button');
+    buttons[1].click();
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({ status: 'accepted' })
+    );
+  });
+
   it('should save consent to localStorage on accept', () => {
     fixture.detectChanges();
 
     const buttons = fixture.nativeElement.querySelectorAll('ui-button button');
-    const acceptButton = buttons[1];
-    acceptButton.click();
+    buttons[1].click();
     fixture.detectChanges();
 
     const saved = JSON.parse(localStorage.getItem('cookie-consent') || '{}');
@@ -91,8 +99,7 @@ describe('UiCookieConsentComponent', () => {
     fixture.detectChanges();
 
     const buttons = fixture.nativeElement.querySelectorAll('ui-button button');
-    const acceptButton = buttons[1];
-    acceptButton.click();
+    buttons[1].click();
     fixture.detectChanges();
 
     expect(localStorage.getItem('custom-consent-key')).toBeTruthy();
@@ -116,5 +123,17 @@ describe('UiCookieConsentComponent', () => {
     expect(link).toBeTruthy();
     expect(link.href).toBe('https://example.com/privacy');
     expect(link.textContent.trim()).toBe('Privacy Policy');
+  });
+
+  it('should emit accepted on init if consent was previously accepted', () => {
+    localStorage.setItem(
+      'cookie-consent',
+      JSON.stringify({ status: 'accepted', timestamp: Date.now() })
+    );
+
+    const spy = jest.spyOn(component.accepted, 'emit');
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalled();
   });
 });
