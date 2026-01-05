@@ -6,6 +6,7 @@ import { UiInputComponent, UiTextareaComponent, UiLabelComponent, UiButtonCompon
 import { firstValueFrom } from 'rxjs';
 import { RecaptchaService } from '../../services/recaptcha.service';
 import { ContactService } from '../../services/contact.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -27,6 +28,7 @@ export class ContactFormComponent {
   private fb = new FormBuilder();
   private recaptchaService = inject(RecaptchaService);
   private contactService = inject(ContactService);
+  private analyticsService = inject(AnalyticsService);
 
   contactForm: FormGroup;
   isSubmitting = signal(false);
@@ -87,6 +89,7 @@ export class ContactFormComponent {
       if (response.success) {
         this.submitSuccess.set(true);
         this.contactForm.reset();
+        this.analyticsService.trackContactFormSubmission();
 
         setTimeout(() => {
           this.submitSuccess.set(false);

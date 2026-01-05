@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID, ViewEn
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-hero',
@@ -16,6 +17,7 @@ export class HeroComponent {
   private platformId = inject(PLATFORM_ID);
   private languageService = inject(LanguageService);
   private translateService = inject(TranslateService);
+  private analyticsService = inject(AnalyticsService);
 
   mouseX = signal(0);
   mouseY = signal(0);
@@ -48,5 +50,9 @@ export class HeroComponent {
 
   getBubbleTransform(factor: number): string {
     return `translate(${this.mouseX() * factor}px, ${this.mouseY() * factor}px)`;
+  }
+
+  trackCTA(ctaName: string): void {
+    this.analyticsService.trackCTAClick(ctaName, 'hero');
   }
 }

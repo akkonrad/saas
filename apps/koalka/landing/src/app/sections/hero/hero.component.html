@@ -24,13 +24,13 @@
 
         <!-- CTAs -->
         <div class="hero-ctas" role="group" aria-label="Call to action buttons">
-          <a [href]="anchors().contact" class="cta-button">
+          <a [href]="anchors().contact" class="cta-button" (click)="trackCTA('contact_primary')">
             {{ 'hero.cta_primary' | translate }}
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </a>
-          <a [href]="anchors().howItWorks" class="cta-button-outline">
+          <a [href]="anchors().howItWorks" class="cta-button-outline" (click)="trackCTA('how_it_works')">
             {{ 'hero.cta_secondary' | translate }}
           </a>
         </div>
