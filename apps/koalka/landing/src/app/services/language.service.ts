@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 
 export type Language = 'pl' | 'en';
+export type Variant = 'default' | 'gov';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,12 @@ export class LanguageService {
   private platformId = inject(PLATFORM_ID);
 
   currentLanguage = signal<Language>('pl');
+  currentVariant = signal<Variant>('default');
 
   private readonly STORAGE_KEY = 'koalka-language';
+  private readonly VARIANT_STORAGE_KEY = 'koalka-variant';
   private readonly SUPPORTED_LANGUAGES: Language[] = ['pl', 'en'];
+  private readonly SUPPORTED_VARIANTS: Variant[] = ['default', 'gov'];
 
   constructor() {
     this.initializeLanguage();

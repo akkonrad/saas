@@ -1,6 +1,12 @@
 <footer class="footer footer-center p-10 bg-base-200 text-base-content" role="contentinfo">
   <div class="max-w-4xl">
     <p class="text-lg font-semibold">{{ 'footer.tagline' | translate }}</p>
-    <p class="text-sm opacity-70">{{ 'footer.copyright' | translate }}</p>
+    <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+      <p class="text-sm opacity-70">{{ 'footer.copyright' | translate: { year: currentYear } }}</p>
+      <span class="hidden sm:inline opacity-50">|</span>
+      <a [routerLink]="privacyPolicyLink()" class="text-sm link link-hover opacity-70">
+        {{ 'footer.privacy_policy' | translate }}
+      </a>
+    </div>
   </div>
 </footer>

@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "problem": "Problem",
+    "solution": "Rozwiązanie",
+    "how_it_works": "Jak to działa",
+    "for_who": "Dla kogo",
+    "why_me": "Dlaczego my",
+    "team": "Zespół",
+    "contact": "Kontakt"
+  },
+  "anchors": {
+    "hero": "hero",
+    "problem": "problem",
+    "solution": "rozwiazanie",
+    "how_it_works": "jak-to-dziala",
+    "for_who": "dla-kogo",
+    "team": "zespol",
+    "contact": "kontakt"
+  },
+  "hero": {
+    "badge": "Automatyzacja dla administracji",
+    "title": "Twoi urzędnicy przepisują dane z wniosków do systemu. Codziennie.",
+    "subtitle": "Budujemy automatyzacje, które skracają czas obsługi interesanta. Bez nowych etatów. Bez wdrażania systemu, który \"prawie pasuje\" do Twoich procedur.",
+    "cta_primary": "Porozmawiajmy",
+    "cta_secondary": "Jak to działa?",
+    "stat_time_label": "średnio miesięcznie\nzaoszczędzonego czasu",
+    "stat1_label": "Zaoszczędzony czas",
+    "stat2_label": "Zautomatyzowane procesy",
+    "tagline": "Automatyzacje dla urzędów - żeby Twój zespół mógł obsługiwać mieszkańców, nie klikać.",
+    "bubble_time_saved": "Zaoszczędzony czas",
+    "bubble_emails": "Powiadomienia",
+    "bubble_emails_auto": "Automatycznie",
+    "bubble_copypaste": "Koniec z",
+    "bubble_crm_auto": "Auto-raportowanie",
+    "bubble_systems": "Systemy",
+    "bubble_connected": "Połączone"
+  },
+  "problem": {
+    "title": "20 godzin miesięcznie. Tyle Twój zespół traci na rzeczy, które powinny robić się same.",
+    "item1_title": "Przepisywanie danych z wniosków",
+    "item1_desc": "Ręczne wprowadzanie tych samych danych do kilku systemów - ePUAP, rejestr, Excel, sprawozdania.",
+    "item2_title": "Wysyłanie powiadomień do mieszkańców",
+    "item2_desc": "Przypomnienia o terminach, potwierdzenia przyjęcia wniosku, informacje o statusie sprawy - wszystko ręcznie.",
+    "item3_title": "Generowanie sprawozdań i raportów",
+    "item3_desc": "Comiesięczne zestawienia, raporty kwartalne, statystyki - godziny ręcznej pracy z danymi.",
+    "item4_title": "Obsługa powtarzalnych spraw",
+    "item4_desc": "Zaświadczenia, odpisy, wnioski o informację publiczną - te same czynności setki razy.",
+    "not_work": "To nie jest obsługa mieszkańca.",
+    "its_clicking": "To jest klikanie.",
+    "full_rate": "A mieszkaniec czeka w kolejce.",
+    "reason": "Nie dlatego, że Twoi urzędnicy są leniwi. Dlatego, że systemy nie są ze sobą połączone."
+  },
+  "solution": {
+    "title": "Jak pomagamy?",
+    "description": "Tworzymy dedykowane rozwiązania automatyzacji dopasowane do procedur administracyjnych",
+    "benefit1_title": "Analiza procesów urzędowych",
+    "benefit1_desc": "Poznajemy Wasze procedury i identyfikujemy miejsca, gdzie automatyzacja przyniesie największe oszczędności",
+    "benefit2_title": "Dedykowany projekt automatyzacji",
+    "benefit2_desc": "Projektujemy rozwiązanie zgodne z wymogami prawnymi i Waszymi procedurami",
+    "benefit3_title": "Integracja z istniejącymi systemami",
+    "benefit3_desc": "Łączymy ePUAP, EZD, rejestry i inne systemy bez ich wymiany",
+    "benefit4_title": "Samodzielność po wdrożeniu",
+    "benefit4_desc": "Po wdrożeniu jesteście niezależni - pełna dokumentacja i szkolenie"
+  },
+  "how_it_works": {
+    "title": "Jak to działa?",
+    "step1_title": "Bezpłatna 30-minutowa konsultacja",
+    "step1_desc": "Poznajemy Wasze wyzwania i możliwości automatyzacji",
+    "step2_title": "Propozycja rozwiązania",
+    "step2_desc": "Przedstawiamy plan i wycenę dedykowanego rozwiązania",
+    "step3_title": "Wdrożenie i przekazanie",
+    "step3_desc": "Tworzymy automatyzację i przekazujemy ją w Wasze ręce"
+  },
+  "for_who": {
+    "title": "Dla kogo?",
+    "ecommerce_title": "Urząd Gminy",
+    "ecommerce_desc": "Automatyzacja obsługi wniosków i komunikacji z mieszkańcami",
+    "ecommerce_step": {
+      "1": "Wniosek",
+      "2": "Weryfikacja",
+      "3": "Decyzja"
+    },
+    "logistics_title": "Starostwo Powiatowe",
+    "logistics_desc": "Automatyzacja sprawozdawczości i obiegu dokumentów",
+    "logistics_step": {
+      "1": "Dokument",
+      "2": "Obieg",
+      "3": "Archiwum"
+    },
+    "b2b_title": "Urząd Stanu Cywilnego",
+    "b2b_desc": "Automatyzacja wydawania odpisów i zaświadczeń",
+    "b2b_step": {
+      "1": "Wniosek",
+      "2": "Odpis",
+      "3": "Wysyłka"
+    }
+  },
+  "why_me": {
+    "title": "Dlaczego warto z nami współpracować?",
+    "problem1_title": "Gotowe systemy nie pasują do Waszych procedur",
+    "problem1_desc": "Mamy doświadczenie w tworzeniu rozwiązań dopasowanych do specyfiki administracji publicznej",
+    "problem2_title": "Integracja z systemami dziedzinowymi",
+    "problem2_desc": "Łączymy się z ePUAP, EZD, rejestrami i systemami legacy - nawet tymi z lat 90.",
+    "problem3_title": "Zgodność z przepisami",
+    "problem3_desc": "Rozumiemy wymogi RODO, KPA i innych regulacji - automatyzacja nie naruszy przepisów"
+  },
+  "team": {
+    "subtitle": "Poznaj nas",
+    "title": "Zespół KOALKA",
+    "description": "Łączymy doświadczenie w technologii z praktycznym podejściem do biznesu. Nie teoretyzujemy - budujemy rozwiązania, które działają.",
+    "member1_name": "Konrad",
+    "member1_role": "Co-Founder, Solution Architect",
+    "member1_desc": "18+ lat doświadczenia. Buduje startup AI automatyzujący badania kliniczne. Pracował w Szwajcarii dla klientów z sektora finansowego i medycznego.",
+    "member1_automation": "Automatyzacje w procesach klinicznych z wykorzystaniem AI",
+    "member1_alt": "Konrad - Solution Architect, Co-Founder",
+    "member2_name": "Aleksander",
+    "member2_role": "Co-Founder, Automation Specialist",
+    "member2_desc": "12+ lat doświadczenia. Projekty dla branży medycznej i finansowej. Budował systemy enterprise i aplikacje dla startupów.",
+    "member2_automation": "Automatyzacja zarządzania celami i OKR",
+    "member2_alt": "Aleksander - Automation Specialist, Co-Founder",
+    "member3_name": "Kamil",
+    "member3_role": "Co-Founder, Lead Developer",
+    "member3_desc": "Specjalizacja w budowie skalowalnych aplikacji. Doświadczenie w startupach technologicznych oraz projektach enterprise.",
+    "member3_automation": "Automatyzacje integracji systemów e-commerce",
+    "member3_alt": "Kamil - Lead Developer, Co-Founder"
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "description": "Umów się na bezpłatną konsultację i poznaj możliwości automatyzacji w Twoim urzędzie",
+    "form_name": "Imię",
+    "form_name_placeholder": "Jan",
+    "form_email": "Email",
+    "form_email_placeholder": "jan@urzad.gov.pl",
+    "form_company": "Nazwa urzędu/instytucji (opcjonalne)",
+    "form_company_placeholder": "np. Urząd Gminy Przykładowo",
+    "form_message": "Jaki proces chcielibyście zautomatyzować? (opcjonalnie)",
+    "form_message_placeholder": "Opowiedzcie nam o swoim wyzwaniu...",
+    "form_submit": "Wyślij i umówmy się na rozmowę",
+    "form_error_required": "To pole jest wymagane",
+    "form_error_email": "Podaj poprawny adres email",
+    "form_error_captcha": "Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.",
+    "form_error_submission_error": "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+    "form_error_network_error": "Błąd sieci. Sprawdź połączenie i spróbuj ponownie.",
+    "form_error_reCAPTCHA verification failed": "Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.",
+    "form_error_Spam detection triggered": "Twoja wiadomość została oznaczona jako spam. Spróbuj ponownie.",
+    "form_success": "Dziękujemy! Skontaktujemy się wkrótce."
+  },
+  "footer": {
+    "tagline": "Automatyzujemy procesy, żebyście mogli skupić się na obsłudze mieszkańców",
+    "copyright": "© 2025 Koalka. Wszelkie prawa zastrzeżone."
+  },
+  "seo": {
+    "title": "KOALKA - Automatyzacja procesów dla urzędów | Oszczędź 20h miesięcznie",
+    "description": "Budujemy dedykowane automatyzacje dla urzędów, starostw i gmin. Integrujemy systemy, eliminujemy ręczną pracę i skracamy czas obsługi mieszkańca. Bezpłatna konsultacja.",
+    "keywords": "automatyzacja urzędu, automatyzacja procesów, gmina, starostwo, urząd gminy, integracja systemów, ePUAP, EZD, obsługa mieszkańca, e-administracja",
+    "og_title": "KOALKA - Automatyzacja procesów dla urzędów",
+    "og_description": "Budujemy dedykowane automatyzacje dla urzędów i instytucji publicznych. Oszczędź 20h miesięcznie dzięki naszym rozwiązaniom.",
+    "og_image_alt": "KOALKA - Automatyzacja dla administracji",
+    "twitter_title": "KOALKA - Automatyzacja procesów dla urzędów",
+    "twitter_description": "Budujemy dedykowane automatyzacje dla urzędów i instytucji publicznych. Oszczędź 20h miesięcznie.",
+    "twitter_image_alt": "KOALKA - Automatyzacja dla administracji",
+    "language": "Polish",
+    "og_locale": "pl_PL"
+  }
+}

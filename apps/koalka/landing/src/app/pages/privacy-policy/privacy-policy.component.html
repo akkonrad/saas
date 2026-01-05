@@ -1,0 +1,111 @@
+<app-header />
+
+<main class="min-h-screen bg-base-100">
+  <div class="container mx-auto px-4 py-16 max-w-4xl">
+    <!-- Back link -->
+    <a [routerLink]="homeLink" class="link link-primary mb-8 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      {{ 'privacy.back_home' | translate }}
+    </a>
+
+    <!-- Title -->
+    <h1 class="text-3xl md:text-4xl font-bold mb-8">
+      {{ 'privacy.title' | translate }}
+    </h1>
+
+    <p class="text-sm text-base-content/60 mb-8">
+      {{ 'privacy.last_updated' | translate }}: {{ currentYear }}
+    </p>
+
+    <!-- Content sections -->
+    <div class="prose prose-lg max-w-none">
+
+      <!-- Section 1: Administrator -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section1_title' | translate }}</h2>
+        <p class="text-base-content/80">{{ 'privacy.section1_content' | translate }}</p>
+        <p class="text-base-content/80 mt-2">
+          {{ 'privacy.contact_email' | translate }}:
+          <a href="mailto:contact@koalka.pl" class="link link-primary">contact&#64;koalka.pl</a>
+        </p>
+      </section>
+
+      <!-- Section 2: What data we collect -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section2_title' | translate }}</h2>
+        <p class="text-base-content/80 mb-4">{{ 'privacy.section2_intro' | translate }}</p>
+        <ul class="list-disc list-inside text-base-content/80 space-y-2">
+          <li>{{ 'privacy.section2_item1' | translate }}</li>
+          <li>{{ 'privacy.section2_item2' | translate }}</li>
+          <li>{{ 'privacy.section2_item3' | translate }}</li>
+          <li>{{ 'privacy.section2_item4' | translate }}</li>
+        </ul>
+      </section>
+
+      <!-- Section 3: Why we collect data -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section3_title' | translate }}</h2>
+        <p class="text-base-content/80 mb-4">{{ 'privacy.section3_intro' | translate }}</p>
+        <ul class="list-disc list-inside text-base-content/80 space-y-2">
+          <li>{{ 'privacy.section3_item1' | translate }}</li>
+          <li>{{ 'privacy.section3_item2' | translate }}</li>
+        </ul>
+      </section>
+
+      <!-- Section 4: Google Analytics -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section4_title' | translate }}</h2>
+        <p class="text-base-content/80 mb-4">{{ 'privacy.section4_content' | translate }}</p>
+        <ul class="list-disc list-inside text-base-content/80 space-y-2">
+          <li>{{ 'privacy.section4_item1' | translate }}</li>
+          <li>{{ 'privacy.section4_item2' | translate }}</li>
+          <li>{{ 'privacy.section4_item3' | translate }}</li>
+        </ul>
+        <p class="text-base-content/80 mt-4">{{ 'privacy.section4_note' | translate }}</p>
+      </section>
+
+      <!-- Section 5: Cookies -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section5_title' | translate }}</h2>
+        <p class="text-base-content/80 mb-4">{{ 'privacy.section5_content' | translate }}</p>
+        <ul class="list-disc list-inside text-base-content/80 space-y-2">
+          <li>{{ 'privacy.section5_item1' | translate }}</li>
+          <li>{{ 'privacy.section5_item2' | translate }}</li>
+        </ul>
+      </section>
+
+      <!-- Section 6: Data retention -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section6_title' | translate }}</h2>
+        <p class="text-base-content/80">{{ 'privacy.section6_content' | translate }}</p>
+      </section>
+
+      <!-- Section 7: Your rights -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section7_title' | translate }}</h2>
+        <p class="text-base-content/80 mb-4">{{ 'privacy.section7_intro' | translate }}</p>
+        <ul class="list-disc list-inside text-base-content/80 space-y-2">
+          <li>{{ 'privacy.section7_item1' | translate }}</li>
+          <li>{{ 'privacy.section7_item2' | translate }}</li>
+          <li>{{ 'privacy.section7_item3' | translate }}</li>
+          <li>{{ 'privacy.section7_item4' | translate }}</li>
+        </ul>
+        <p class="text-base-content/80 mt-4">
+          {{ 'privacy.section7_contact' | translate }}
+          <a href="mailto:contact@koalka.pl" class="link link-primary">contact&#64;koalka.pl</a>
+        </p>
+      </section>
+
+      <!-- Section 8: Changes -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">{{ 'privacy.section8_title' | translate }}</h2>
+        <p class="text-base-content/80">{{ 'privacy.section8_content' | translate }}</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<app-footer />

@@ -14,6 +14,7 @@ export * from './lib/language-switcher/language-switcher.component';
 export * from './lib/language-switcher/language-toggle.component';
 export * from './lib/language-switcher/language-group.component';
 export * from './lib/language-switcher/language-dropdown.component';
+export * from './lib/cookie-consent/cookie-consent.component';
 
 // Export types
 export type { ButtonVariant, ButtonSize, ButtonType } from './lib/button/button.component';
@@ -27,3 +28,8 @@ export type {
   LanguageSwitcherVariant,
 } from './lib/language-switcher/types';
 export type { LanguageToggleVariant } from './lib/language-switcher/language-toggle.component';
+export type {
+  CookieConsentConfig,
+  ConsentStatus,
+  ConsentResult,
+} from './lib/cookie-consent/cookie-consent.component';
