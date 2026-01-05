@@ -9,10 +9,6 @@ const meta: Meta<UiCookieConsentComponent> = {
     layout: 'fullscreen',
   },
   argTypes: {
-    gaTrackingId: {
-      control: 'text',
-      description: 'Google Analytics Measurement ID (e.g., G-XXXXXXXXXX)',
-    },
     message: {
       control: 'text',
       description: 'Main message displayed in the banner',
@@ -51,16 +47,13 @@ export default meta;
 type Story = StoryObj<UiCookieConsentComponent>;
 
 export const Default: Story = {
-  args: {
-    gaTrackingId: 'G-XXXXXXXXXX',
-  },
+  args: {},
 };
 
 export const CustomMessage: Story = {
   args: {
-    gaTrackingId: 'G-XXXXXXXXXX',
     message:
-      'We use cookies to analyze website traffic and optimize your experience. Your data helps us improve our services.',
+      'We use cookies to analyze website traffic and optimize your experience.',
     acceptButtonText: 'Accept',
     rejectButtonText: 'Decline',
   },
@@ -68,7 +61,6 @@ export const CustomMessage: Story = {
 
 export const WithPrivacyPolicy: Story = {
   args: {
-    gaTrackingId: 'G-XXXXXXXXXX',
     message: 'Ta strona używa plików cookie do analizy ruchu.',
     privacyPolicyUrl: 'https://example.com/privacy',
     privacyPolicyText: 'Dowiedz się więcej',
@@ -77,9 +69,8 @@ export const WithPrivacyPolicy: Story = {
 
 export const EnglishVersion: Story = {
   args: {
-    gaTrackingId: 'G-XXXXXXXXXX',
     message:
-      'This website uses cookies for analytics (Google Analytics). Your data helps us improve our service.',
+      'This website uses cookies for analytics. Your data helps us improve our service.',
     acceptButtonText: 'Accept',
     rejectButtonText: 'Decline',
     privacyPolicyUrl: 'https://example.com/privacy',
@@ -89,7 +80,6 @@ export const EnglishVersion: Story = {
 
 export const MinimalMessage: Story = {
   args: {
-    gaTrackingId: 'G-XXXXXXXXXX',
     message: 'Używamy cookies.',
     acceptButtonText: 'OK',
     rejectButtonText: 'Nie',
