@@ -29,38 +29,39 @@ export class AnalyticsService implements OnDestroy {
       return;
     }
 
+    this.gaInitialized = true;
     console.log('[GA] Initializing Google Analytics:', GA_TRACKING_ID);
 
-    // Initialize dataLayer and gtag function
+    // 1. Initialize dataLayer and gtag function FIRST
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer!.push(arguments);
     };
 
-    // Set consent granted
-    window.gtag('consent', 'default', {
-      analytics_storage: 'granted',
+    // 2. Configure gtag BEFORE loading script
+    window.gtag('js', new Date());
+    window.gtag('config', GA_TRACKING_ID, {
+      anonymize_ip: true,
+      send_page_view: true,
     });
 
-    // Load gtag.js script
+    // 3. Load gtag.js script
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
-    document.head.appendChild(script);
 
     script.onload = () => {
-      console.log('[GA] Script loaded, configuring...');
-      window.gtag!('js', new Date());
-      window.gtag!('config', GA_TRACKING_ID, {
-        anonymize_ip: true,
-      });
-      console.log('[GA] Initialized successfully');
-      this.gaInitialized = true;
+      console.log('[GA] Script loaded successfully');
     };
 
     script.onerror = () => {
       console.error('[GA] Failed to load script');
+      this.gaInitialized = false;
     };
+
+    document.head.appendChild(script);
+    console.log('[GA] Initialization complete');
   }
 
   /**
